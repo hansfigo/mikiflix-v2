@@ -7,4 +7,14 @@
 
 body {
     font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+body::-webkit-scrollbar {
+    display: none;
 }

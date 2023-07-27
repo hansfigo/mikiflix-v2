@@ -36,6 +36,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@consumet/extensions": "^1.5.0"
+		"@consumet/extensions": "^1.5.0",
+		"@floating-ui/dom": "^1.4.5",
+		"swiper": "^10.0.4"
 	}
 }
