@@ -44,7 +44,7 @@
 									{anime.description}
 								</p>
 								<div class="h-8 w-12">
-									<button class="btn variant-ghost-primary h-4 md:h-6 w-10 md:w-14"><p class="text-[6px] md:text-[8px]">Watch now</p></button>
+									<button class="btn variant-ghost-primary h-6 md:h-8 w-14 md:w-16"><p class="text-[8px] md:text-[10px]">Watch now</p></button>
 								</div>
 							</div>
 							<img class="object-cover h-72 w-full" src={anime.cover} alt="" loading="lazy" />
@@ -57,7 +57,7 @@
 		{/if}
 	</div>
 	<section>
-		<h1 class="text-center font-semibold text-xl md:text-2xl my-7">Recent Rekease</h1>
+		<h1 class="text-center font-semibold text-xl md:text-2xl my-7">Recent Release</h1>
 		{#await recentAnime}
 			Loading...
 		{:then value}
