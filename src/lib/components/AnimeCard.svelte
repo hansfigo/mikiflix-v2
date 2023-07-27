@@ -5,9 +5,9 @@
 	export let popupData: PopupSettings;
 	export let index: number;
 	export let image: string;
-	export let title: string;
-	export let type: string;
-	export let episodeNumber: string;
+	export let title: string | undefined;
+	export let type: string | undefined;
+	export let episodeNumber: number;
 </script>
 
 <div
@@ -20,7 +20,6 @@
 	<section class="p-4 break-words text-xs">{title}</section>
 </div>
 <div class="card p-4 variant-ghost-tertiary text-white" data-popup={`popupHover${index}`}>
-	<p>{type}</p>
-	<p>Ep {episodeNumber}</p>
+	<p>{type} Ep {episodeNumber} </p>
 	<div class="arrow variant-filled-tertiary" />
 </div>
