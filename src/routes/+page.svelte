@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
-
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -12,6 +10,7 @@
 	import { browser } from '$app/environment';
 	import AnimeCard from '$lib/components/AnimeCard.svelte';
 	import Carousel from '$lib/components/Carousel.svelte';
+	import { setContext } from 'svelte';
 </script>
 
 <svelte:head>
@@ -33,14 +32,7 @@
 		{:then value}
 			<div class="flex gap-4 flex-wrap justify-center">
 				{#each value as anime, i}
-					<AnimeCard
-						episodeNumber={anime.episodeNumber}
-						image={anime.image}
-						index={i}
-						popupData={recentAnimePopupData[i]}
-						title={anime.title.romaji}
-						type={anime.type}
-					/>
+					<AnimeCard animeList={recentAnime} {i} popupData={recentAnimePopupData[i]} />
 				{/each}
 			</div>
 		{:catch error}
@@ -60,7 +52,7 @@
 </div>
 
 <style lang="postcss">
-	h1{
+	h1 {
 		@apply text-center font-semibold text-xl md:text-2xl;
-	} 
+	}
 </style>

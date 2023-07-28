@@ -1,25 +1,42 @@
 <script lang="ts">
-	import anime from '@consumet/extensions/dist/providers/anime';
+	import type { Anime, RecentAnime } from '$lib/types/anime';
 	import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
-
+	import Star from './icons/star.svelte';
+  
 	export let popupData: PopupSettings;
-	export let index: number;
-	export let image: string;
-	export let title: string | undefined;
-	export let type: string | undefined;
-	export let episodeNumber: number;
-</script>
-
-<div
-	class="card card-hover w-40 variant-ghost-tertiary flex justify-center flex-col items-center"
-	use:popup={popupData}
->
+	export let i: number;
+	export let animeList: (Anime | RecentAnime)[];
+  
+	// Use a type guard to narrow down the type to Anime
+	function isAnime(item: Anime | RecentAnime): item is Anime {
+	  return 'description' in item;
+	}
+  
+	$: anim = animeList[i];
+  </script>
+  
+  <!-- Your HTML template -->
+  <div class="card card-hover w-40 variant-ghost-secondary border-surface-500 border-[0.2px] flex justify-center flex-col items-center" use:popup={popupData}>
 	<header class="card-header w-36">
-		<img class="h-auto object-cover max-w-full" src={image} alt="Anime Cover" />
+	  <img class="h-auto object-cover max-w-full" src={anim.image} alt="Anime Cover" />
 	</header>
-	<section class="p-4 break-words text-xs">{title}</section>
-</div>
-<div class="card p-4 variant-ghost-tertiary text-white" data-popup={`popupHover${index}`}>
-	<p>{type} Ep {episodeNumber} </p>
-	<div class="arrow variant-filled-tertiary" />
-</div>
+	<section class="p-4 break-words text-xs">{anim.title?.romaji}</section>
+  </div>
+  <div class="card z-20 p-4 variant-glass-tertiary text-white min-w-[10rem] max-w-[10rem]" data-popup={`popupHover${i}`}>
+	<div class="flex justify-between w-full">
+		<p>{anim.type}  {anim.episodeNumber ? `Ep${anim.episodeNumber}` : ''}</p>
+		<div class="flex">
+			<p>{anim.rating}</p>
+			<Star/>
+		</div>
+	</div>
+	{#if anim.genres}
+	  <div class="flex flex-wrap gap-1">
+		{#each anim.genres as genre}
+		  <span class="badge variant-ghost-success text-[8px]">{genre}</span>
+		{/each}
+	  </div>
+	{/if}
+	<div class="arrow variant-glass-tertiary" />
+  </div>
+  

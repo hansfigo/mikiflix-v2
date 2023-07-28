@@ -22,7 +22,7 @@ export interface Anime {
     rating?: number;
     releaseDate?: number;
     color?: string;
-    genres?: string[];
+    genres?: Array<string>;
     totalEpisodes?: number;
     duration?: number;
     type?: string;
@@ -101,7 +101,7 @@ export interface RecentAnime {
     episodeId?: string;
     episodeTitle?: string;
     episodeNumber: number;
-    genres?: string[];
+    genres?: Array<string>;
     type?: string;
 }
 
