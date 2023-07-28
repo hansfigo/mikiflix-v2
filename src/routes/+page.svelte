@@ -10,7 +10,6 @@
 	import { browser } from '$app/environment';
 	import AnimeCard from '$lib/components/AnimeCard.svelte';
 	import Carousel from '$lib/components/Carousel.svelte';
-	import { setContext } from 'svelte';
 </script>
 
 <svelte:head>
