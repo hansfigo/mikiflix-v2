@@ -10,13 +10,21 @@
 	import { Toast, storePopup } from '@skeletonlabs/skeleton';
 
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
-
 </script>
 
+<svelte:window class="overflow-x-hidden" />
 
-<div class="overflow-hidden">
+<div class="flex flex-col min-h-screen h-full justify-between md xl-screen">
 	<Toast />
 	<Navbar />
 	<slot />
 	<Footer />
 </div>
+
+<style>
+	@media (min-width: 1920px) {
+		.xl-screen {
+			height: 100vh;
+		}
+	}
+</style>

@@ -8,8 +8,9 @@ interface Params extends RouteParams {
   }
 
 export const GET: RequestHandler = async ({ url, params }) => {
+
     const { query } = params as Params
-    
+
     const { page, perPage } = getPaginationParamsFromURL(url)
 
     const { results, currentPage, hasNextPage, totalPages } = await anime.search(query, page, perPage)

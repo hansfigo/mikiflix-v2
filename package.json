@@ -40,6 +40,8 @@
 	"dependencies": {
 		"@consumet/extensions": "^1.5.0",
 		"@floating-ui/dom": "^1.4.5",
+		"gsap": "^3.12.2",
+		"svelte-icons": "^2.1.0",
 		"svelte-markdown": "^0.3.0",
 		"swiper": "^10.0.4"
 	}

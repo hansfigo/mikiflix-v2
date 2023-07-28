@@ -16,14 +16,16 @@
 </script>
 
 <!-- Your HTML template -->
-<div
-	class="relative rounded-lg overflow-hidden card-hover w-40 variant-ghost-primary border-surface-500 border-[0.2px] flex justify-center flex-col items-center"
-	use:popup={popupData}
->
-	<img class="h-full object-cover max-w-full" src={anim.image} alt="Anime Cover" />
-	<section class="absolute h-full w-full bg-gradient-to-t from-surface-600 opacity-80" />
-	<section class="absolute bottom-4 left-2 break-words text-xs">{anim.title?.romaji}</section>
-</div>
+<a href={`/anime/${anim.id}`}>
+	<div
+		class="relative rounded-lg overflow-hidden card-hover w-40 variant-ghost-primary border-surface-500 border-[0.2px] flex justify-center flex-col items-center"
+		use:popup={popupData}
+	>
+		<img class="h-full object-cover max-w-full" src={anim.image} alt="Anime Cover" />
+		<section class="absolute h-full w-full bg-gradient-to-t from-surface-600 opacity-80" />
+		<section class="absolute bottom-4 left-2 break-words text-xs">{anim.title?.romaji}</section>
+	</div>
+</a>
 
 <div class="hidden md:block">
 	<div

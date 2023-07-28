@@ -11,6 +11,12 @@ dependencies:
   '@floating-ui/dom':
     specifier: ^1.4.5
     version: 1.4.5
+  gsap:
+    specifier: ^3.12.2
+    version: 3.12.2
+  svelte-icons:
+    specifier: ^2.1.0
+    version: 2.1.0
   svelte-markdown:
     specifier: ^0.3.0
     version: 0.3.0(svelte@4.1.1)
@@ -1456,6 +1462,10 @@ packages:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
 
+  /gsap@3.12.2:
+    resolution: {integrity: sha512-EkYnpG8qHgYBFAwsgsGEqvT1WUidX0tt/ijepx7z8EUJHElykg91RvW1XbkT59T0gZzzszOpjQv7SE41XuIXyQ==}
+    dev: false
+
   /has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
@@ -2256,6 +2266,10 @@ packages:
     dependencies:
       svelte: 4.1.1
     dev: true
+
+  /svelte-icons@2.1.0:
+    resolution: {integrity: sha512-rHPQjweEc9fGSnvM0/4gA3pDHwyZyYsC5KhttCZRhSMJfLttJST5Uq0B16Czhw+HQ+HbSOk8kLigMlPs7gZtfg==}
+    dev: false
 
   /svelte-markdown@0.3.0(svelte@4.1.1):
     resolution: {integrity: sha512-cFcHYZlykgCMxRp7fqPlaAGadp5dRiYjzpKTnf/yHMJo2ToUXwtL5h5krCVy03CC7fv096g4mD9SOTYjyOF5UA==}
