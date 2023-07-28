@@ -9,8 +9,8 @@
 	<title>Search for '{data.query}'</title>
 </svelte:head>
 
-<div class="pt-20 px-8">
-	<h1>Search Results for '{data.query}'</h1>
+<div class="pt-20">
+	<h1 class="px-8 pb-4">Search Results for <span>'{data.query}'</span></h1>
 	{#await data.search.results}
 		Loading...
 	{:then value}
@@ -27,5 +27,9 @@
 <style lang="postcss">
 	h1 {
 		@apply text-xl;
+	}
+
+	span{
+		font-weight: 600;
 	}
 </style>

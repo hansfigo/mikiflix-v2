@@ -28,7 +28,6 @@
 	$: isNavbarShow = $y < 220 ? true : false;
 
 	console.log(isNavbarShow);
-	
 </script>
 
 <svelte:window bind:scrollY={$y} />
@@ -45,15 +44,15 @@
 		<form on:submit|preventDefault={() => handleSearch()}>
 			<input
 				bind:value={$input}
-				class="input variant-glass-secondary w-44"
+				class={`input variant-ghost-tertiary text-white w-44`}
 				title="Input (text)"
 				type="text"
 				placeholder="search anime"
 			/>
 		</form>
 	</div>
-	{#if $navigating }
-		{#if isHome && isNavbarShow }
+	{#if $navigating}
+		{#if isHome && isNavbarShow}
 			<ProgressBar rounded={'rounded-none'} height={'h-[0.5px]'} />
 		{/if}
 		<ProgressBar rounded={'rounded-none'} height={'h-[3px]'} />
@@ -66,5 +65,11 @@
 	}
 	.nav-top {
 		@apply fixed  bg-transparent w-screen z-20  border-b-[0px] border-secondary-800;
+	}
+
+	input::placeholder {
+		/* Chrome, Firefox, Opera, Safari 10.1+ */
+		color: white !important;
+		opacity: 1; /* Firefox */
 	}
 </style>

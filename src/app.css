@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --swiper-theme-color: #000 !important;
+    --swiper-navigation-size: 22px !important;
+}
 
 body {
     font-family: 'Inter', sans-serif;

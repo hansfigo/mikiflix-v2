@@ -95,4 +95,12 @@
 	--color-surface-800: 3 3 3; /* ⬅ #030303 */
 	--color-surface-900: 2 2 2; /* ⬅ #020202 */
 	
+	.swiper-button-prev {
+		color: red; 
+	}
+	
+	.swiper-button-next {
+		color: #000; 
+	}
+
 }
