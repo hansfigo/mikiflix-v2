@@ -2,12 +2,13 @@
 	import type { Anime, RecentAnime } from '$lib/types/anime';
 	import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
 	import Star from './icons/star.svelte';
+	import AnimeCoverMobile from './anime-card/AnimeCoverMobile.svelte';
+	import AnimeCoverDesktop from './anime-card/AnimeCoverDesktop.svelte';
 
 	export let popupData: PopupSettings;
 	export let i: number;
 	export let animeList: (Anime | RecentAnime)[];
 
-	// Use a type guard to narrow down the type to Anime
 	function isAnime(item: Anime | RecentAnime): item is Anime {
 		return 'description' in item;
 	}
@@ -15,14 +16,14 @@
 	$: anim = animeList[i];
 </script>
 
-<!-- Your HTML template -->
 <a href={`/anime/${anim.id}`}>
 	<div
-		class="relative rounded-lg overflow-hidden card-hover w-40 variant-ghost-primary border-surface-500 border-[0.2px] flex justify-center flex-col items-center"
+		class="relative rounded-lg card-hover w-40 flex justify-center flex-col items-center"
 		use:popup={popupData}
 	>
-		<img class="h-full object-cover max-w-full" src={anim.image} alt="Anime Cover" />
-		<section class="absolute h-full w-full bg-gradient-to-t from-surface-600 opacity-80" />
+		<AnimeCoverMobile {anim}/>
+		<AnimeCoverDesktop {anim}/>
+
 		<section class="absolute bottom-4 left-2 break-words text-xs">{anim.title?.romaji}</section>
 	</div>
 </a>
@@ -49,3 +50,5 @@
 		<div class="arrow variant-glass-tertiary" />
 	</div>
 </div>
+
+

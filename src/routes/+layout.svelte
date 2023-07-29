@@ -9,6 +9,30 @@
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import { Toast, storePopup } from '@skeletonlabs/skeleton';
 
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
+
+	import { Flip } from 'gsap/dist/Flip';
+	import { gsap } from 'gsap/dist/gsap';
+
+	gsap.registerPlugin(Flip);
+
+	gsap.timeline()
+
+	let state: Flip.FlipState;
+	
+	beforeNavigate(async () => {
+		state = Flip.getState('.cover, .title');
+	});
+
+	afterNavigate(async () => {
+		Flip.from(state, {
+			targets: '.cover, .title',
+			duration: 0.3,
+			scale: true,
+			ease: 'power1.easeInOut'
+		});
+	});
+
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 </script>
 
