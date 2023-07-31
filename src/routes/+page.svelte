@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>Mikiflix</title>
+	<title>Mikiflix | Free Anime Streaming Web</title>
 </svelte:head>
 
 <div>
@@ -39,7 +39,7 @@
 		{/await}
 	</section>
 
-	{#await data.popular.results}
+	<!-- {#await data.popular.results}
 		Loading...
 	{:then value}
 		<div class="flex gap-4 flex-wrap">
@@ -47,7 +47,7 @@
 		</div>
 	{:catch error}
 		{error.message}
-	{/await}
+	{/await} -->
 </div>
 
 <style lang="postcss">

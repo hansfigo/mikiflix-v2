@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>Search for '{data.query}'</title>
+	<title>Search for '{data.query} | Mikiflix'</title>
 </svelte:head>
 
 <div class="pt-20">
