@@ -24,7 +24,7 @@ export const load: PageServerLoad = async ({ url, fetch, setHeaders }) => {
 
         }
 
-        console.log("CACHE MISSS");
+        console.log("CACHE MISS (search : ", query, ")" );
 
         // Fetch data from endpoint
         const res = await fetch(`/api/search/${query}`)
@@ -34,7 +34,7 @@ export const load: PageServerLoad = async ({ url, fetch, setHeaders }) => {
 
         const data = await res.json()
 
-        redis.set(query, JSON.stringify(data), "EX", 60)
+        redis.set(query, JSON.stringify(data), "EX", 600)
 
         return data
     }
