@@ -27,7 +27,7 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
 
         const data = await res.json()
 
-        redis.set(id, JSON.stringify(data), 'EX', 30)
+        redis.set(id, JSON.stringify(data), 'EX', 600)
 
         return data
     }
