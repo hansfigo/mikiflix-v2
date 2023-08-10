@@ -23,6 +23,9 @@ dependencies:
   ioredis:
     specifier: ^5.3.2
     version: 5.3.2
+  locomotive-scroll:
+    specifier: ^4.1.4
+    version: 4.1.4
   svelte-icons:
     specifier: ^2.1.0
     version: 2.1.0
@@ -52,6 +55,9 @@ devDependencies:
   '@tailwindcss/typography':
     specifier: ^0.5.9
     version: 0.5.9(tailwindcss@3.3.3)
+  '@types/locomotive-scroll':
+    specifier: ^4.1.0
+    version: 4.1.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.45.0
     version: 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.45.0)(typescript@5.1.6)
@@ -666,6 +672,10 @@ packages:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
     dev: true
 
+  /@types/locomotive-scroll@4.1.0:
+    resolution: {integrity: sha512-Tnw/FEJQxMhQwIDEzbLIlJuCJOma0D0l3hymoyE75TermfRfNGkUlvzlyHkZvu/GrGW4CH2mUaPs1n1iCdgjqQ==}
+    dev: true
+
   /@types/marked@4.3.1:
     resolution: {integrity: sha512-vSSbKZFbNktrQ15v7o1EaH78EbWV+sPQbPjHG+Cp8CaNcPFUEfjZ0Iml/V0bFDwsTlYe8o6XC5Hfdp91cqPV2g==}
     dev: false
@@ -970,10 +980,18 @@ packages:
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
+  /bezier-easing@2.1.0:
+    resolution: {integrity: sha512-gbIqZ/eslnUFC1tjEvtz0sgx+xTK20wDnYMIA27VA04R7w6xxXQPZDbibjA9DTWZRA2CXtwHykkVzlCaAJAZig==}
+    dev: false
+
   /binary-extensions@2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
     dev: true
+
+  /bindall-standalone@1.0.5:
+    resolution: {integrity: sha512-HDI7YBWXVJk/eoGz+e4lYQQJnYp1ZHcUvAY71lVptLMhQnDm86vD73AGPw2qIlgYR3P0bjmoAcXiA8qhFejBhA==}
+    dev: false
 
   /bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
@@ -1876,6 +1894,10 @@ packages:
     resolution: {integrity: sha512-9pSL5XB4J+ifHP0e0jmmC98OGC1nL8/JjS+fi6mnTlIf//yt/MfVLtKg7S6nCtj/8KTcWX7nRlY0XywoYY1ISQ==}
     dev: true
 
+  /lethargy@1.0.9:
+    resolution: {integrity: sha512-nFM8blpCF9rqIL5mRAaTGc78W8oQixVtsD86jbEPvcI13+lDUYJf3R7DZQQL7tCiBpbGpGKMX2gwJFO9hiaOkg==}
+    dev: false
+
   /levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -1902,6 +1924,14 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /locomotive-scroll@4.1.4:
+    resolution: {integrity: sha512-6i98cFF2SKg6wIPpwVPuo2FG8qL3USsdDeew78TEYZyLoqleMWNfkSDpWA6mPym4dOfTIBXc678VmGlkgx3fTA==}
+    dependencies:
+      bezier-easing: 2.1.0
+      smoothscroll-polyfill: 0.4.4
+      virtual-scroll: 1.5.2
+    dev: false
 
   /lodash.castarray@4.4.0:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
@@ -2535,6 +2565,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /smoothscroll-polyfill@0.4.4:
+    resolution: {integrity: sha512-TK5ZA9U5RqCwMpfoMq/l1mrH0JAR7y7KRvOBx0n2869aLxch+gT9GhN3yUfjiw+d/DiF1mKo14+hd62JyMmoBg==}
+    dev: false
+
   /sorcery@0.11.0:
     resolution: {integrity: sha512-J69LQ22xrQB1cIFJhPfgtLuI6BpWRiWu1Y3vSsIwK/eAScqJxd/+CJlUuHQRdX2C9NGFamq+KqNywGgaThwfHw==}
     hasBin: true
@@ -2813,6 +2847,10 @@ packages:
       any-promise: 1.3.0
     dev: true
 
+  /tiny-emitter@1.2.0:
+    resolution: {integrity: sha512-rWjF00inHeWtT5UbQYAXoMI4hL6TRMqohuKCsODyPYYmfAxqfMnXLsIeNrbdPEkNxlk++rojVilTnI9IVmEBtA==}
+    dev: false
+
   /to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
@@ -2892,6 +2930,15 @@ packages:
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  /virtual-scroll@1.5.2:
+    resolution: {integrity: sha512-7jDHwlKbHUho7CYU/HojE/VKFH8GV9P5fVWP2HCa7dRUOpVvwl93OBOKIIcb2mKd+vqsbVR/0zl0X70+3sUZqA==}
+    dependencies:
+      bindall-standalone: 1.0.5
+      lethargy: 1.0.9
+      object-assign: 4.1.1
+      tiny-emitter: 1.2.0
+    dev: false
 
   /vite@4.4.7:
     resolution: {integrity: sha512-6pYf9QJ1mHylfVh39HpuSfMPojPSKVxZvnclX1K1FyZ1PXDOcLBibdq5t1qxJSnL63ca8Wf4zts6mD8u8oc9Fw==}

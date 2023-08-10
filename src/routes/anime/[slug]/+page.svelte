@@ -1,39 +1,67 @@
 <script lang="ts">
+	import type { AnimeInfo } from '$lib/types/anime';
 	import type { PageData } from './$types';
 	import SvelteMarkdown from 'svelte-markdown';
+	import Tabs from './components/Tabs.svelte';
+	import AnimeCover from './components/AnimeCover.svelte';
 
 	export let data: PageData;
 
-	const anim = data.info;
+	const anim: AnimeInfo = data.info;
+
+	let isReadMore = false;
+
+	const getParagraphs = (text: string) => {
+		return text.split('<br><br>').filter((paragraph) => paragraph.trim() !== '');
+	};
+
+	console.log(getParagraphs(anim.description!).length);
 </script>
 
 <svelte:head>
-	<title>{anim.title?.romaji}</title>
+	<title>{anim.title?.romaji} | Mikiflix</title>
 </svelte:head>
 
 <div>
-	<div class="w-screen h-72 relative">
+	<div class="w-screen h-72 relative border-2">
 		<div class="bg-black opacity-40 absolute w-full h-full" />
 		<img class="object-cover w-full h-full" src={anim.cover} alt="" />
 	</div>
-	<div class="flex justify-center w-full">
-		<div class="w-screen relative container hidden flex-row lg:flex">
-			<div class="absolute top-[-8rem] left-20 max-w-[18rem] flex rounded-md shadow-lg z-10">
+	<div class="flex justify-center w-full border-2">
+		<div class="w-screen relative container hidden lg:flex flex-col border-2 gap-4">
+			<div class="flex flex-row">
+				<AnimeCover {anim} />
+				<div class="min-w-[26rem] border-2" />
 				<div
-					class="cover max-w-[18rem] rounded-lg shadow-lg relative overflow-hidden"
-					data-flip-id={`img-${anim.id}`}
+					class="relative border-2 pt-12 flex flex-col items-start gap-4 h-full w-full overflow-hidden pb-4"
 				>
-					<img src={anim.image} alt={anim.title?.romaji} />
+					<div class="flex items-baseline gap-2">
+						<h1 class="">{anim.title?.romaji}</h1>
+						<p class="text-sm">{anim.releaseDate}</p>
+					</div>
+					<div class="flex gap-4">
+						{#each anim.genres ?? [] as genre}
+							<span class="chip variant-ghost-success">{genre}</span>
+						{/each}
+					</div>
+					<div
+						class={`prose lg:prose-lg prose-p:text-white transition-all duration-500 ${
+							!isReadMore ? `line-clamp-none` : `line-clamp-none`
+						}`}
+					>
+						<SvelteMarkdown source={anim.description} />
+					</div>
+					<div class="pt-12 pb-4 w-full">
+						<Tabs />
+					</div>
 				</div>
 			</div>
-			<div class="min-w-[26rem]" />
-			<div
-				class="relative pt-12 flex flex-col items-start gap-4 h-full w-full overflow-hidden pb-4"
-			>
-				<div class="h-[50%] w-full absolute bg-gradient-to-t from-surface-600 bottom-0 z-0" />
-				<h1 class="">{anim.title?.romaji}</h1>
-				<div class="prose lg:prose-base prose-p:text-white">
-					<SvelteMarkdown source={anim.description} />
+			<div class="w-full border-2 h-[54rem] flex" >
+				<div class="min-w-[26rem] border-2 h-full">
+
+				</div>
+				<div class="w-full border-2">
+
 				</div>
 			</div>
 		</div>
@@ -58,16 +86,21 @@
 			</div>
 		</div>
 	</div>
-	<hr class="h-[2px] my-8 bg-surface-400 border-0" />
 </div>
 
 <style lang="postcss">
 	h1 {
 		@apply text-center font-semibold text-xl md:text-3xl;
 	}
+	h3 {
+		@apply font-semibold;
+	}
 
 	.cover {
 		width: 100%;
 		display: block;
+	}
+	h2 {
+		@apply text-xl font-medium;
 	}
 </style>

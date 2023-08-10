@@ -11,6 +11,11 @@ export const load = (async ({ fetch }) => {
 
         if (cached) {
             console.log("CACHE HIT (recent)");
+
+            console.log("EEEEE",
+                JSON.parse(cached)
+            );
+
             return JSON.parse(cached);
         }
 
@@ -43,6 +48,7 @@ export const load = (async ({ fetch }) => {
     // }
 
     const getTrendingAnime = async (): Promise<ApiCallResult<Anime>> => {
+        // await redis.del('trending')
         const cached = await redis.get('trending')
 
         if (cached) {

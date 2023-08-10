@@ -12,14 +12,17 @@
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 
 	import { Flip } from 'gsap/dist/Flip';
+	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { gsap } from 'gsap/dist/gsap';
+	import { onMount } from 'svelte';
+	import locomotiveScroll from '$lib/utils/locomotiveScroll';
 
-	gsap.registerPlugin(Flip);
+	gsap.registerPlugin(Flip, ScrollTrigger);
 
-	gsap.timeline()
+	gsap.timeline();
 
 	let state: Flip.FlipState;
-	
+
 	beforeNavigate(async () => {
 		state = Flip.getState('.cover, .title');
 	});
@@ -34,11 +37,19 @@
 	});
 
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+
+	onMount(async () => {
+		await locomotiveScroll();
+	});
 </script>
 
 <svelte:window class="overflow-x-hidden" />
 
-<div class="flex flex-col min-h-screen h-full justify-between md xl-screen">
+<div
+	class="flex flex-col h-screen justify-between md xl-screen overflow-scroll
+"
+	data-scroll-container
+>
 	<Toast />
 	<Navbar />
 	<slot />
