@@ -4,7 +4,7 @@
 	export let anim: AnimeInfo;
 </script>
 
-<div class="absolute top-[-8rem] left-20 max-w-[18rem] flex flex-col rounded-md shadow-lg z-10">
+<div class="absolute top-[-8rem] 1max-w-[18rem] flex flex-col rounded-md shadow-lg z-10">
 	<div
 		class="cover max-w-[18rem] rounded-lg shadow-lg relative overflow-hidden"
 		data-flip-id={`img-${anim.id}`}

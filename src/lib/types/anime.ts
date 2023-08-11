@@ -74,7 +74,10 @@ export interface AnimeInfo {
     genres?: string[];
     season?: string;
     studios?: string[];
-    episodes?: Episode[]
+    episodes?: Episode[];
+    relations? : Relation[];
+    characters? : Character[];
+    recommendations? : Recommendation[]
 }
 
 interface Episode {
@@ -85,6 +88,72 @@ interface Episode {
     image: string;
     airDate: string | null;
 }
+
+export interface Recommendation {
+    id: string;
+    malId: string;
+    title: {
+      romaji: string;
+      english: string | null;
+      native: string;
+      userPreferred: string;
+    };
+    status: string;
+    episodes: number;
+    image: string;
+    cover: string;
+    rating: number;
+    type: string;
+  }
+  
+
+interface Character {
+    id: number;
+    role: string;
+    name: {
+      first: string;
+      last: string;
+      full: string;
+      native: string;
+      userPreferred: string;
+    };
+    image: string;
+    voiceActors: VoiceActor[];
+  }
+  
+  interface VoiceActor {
+    id: number;
+    language: string;
+    name: {
+      first: string;
+      last: string;
+      full: string;
+      native: string | null;
+      userPreferred: string;
+    };
+    image: string;
+  }
+  
+
+export interface Relation {
+    id: number;
+    relationType: string;
+    malId: number;
+    title: {
+      romaji: string;
+      english: string | null;
+      native: string;
+      userPreferred: string;
+    };
+    status: string;
+    episodes: number | null;
+    image: string;
+    color: string;
+    type: string;
+    cover: string;
+    rating: number;
+  }
+  
 
 export interface RecentAnime {
     id?: string;
