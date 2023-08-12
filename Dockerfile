@@ -3,7 +3,7 @@ FROM node:18-alpine
 # RUN npm config rm proxy
 # RUN npm config rm https-proxy
 
-RUN npm config set registry https://registry.npm.taobao.org/
+# RUN npm config set registry https://registry.npm.taobao.org/
 
 RUN npm i -g pnpm
 
