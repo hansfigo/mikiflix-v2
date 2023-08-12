@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:18-alpine
 
 # RUN npm config rm proxy
 # RUN npm config rm https-proxy
