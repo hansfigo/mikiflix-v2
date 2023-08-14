@@ -1,19 +1,12 @@
-FROM node:18-alpine
-
-# RUN npm config rm proxy
-# RUN npm config rm https-proxy
-
-# RUN npm config set registry https://registry.npm.taobao.org/
-
-RUN npm i -g pnpm
-
-WORKDIR /app
-
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
-
+FROM node:alpine as build
+WORKDIR /my-project
 COPY . .
-RUN pnpm build
- 
+RUN npm ci --development --silent
+
+FROM node:alpine as prod
+COPY ./package*.json ./
+RUN npm ci --production --silent --ignore-scripts
+COPY --from=build /my-project/.svelte-kit/output ./build
 EXPOSE 3000
-CMD ["node", "build"]
+USER node
+CMD ["node", "./build"]
