@@ -6,7 +6,17 @@ import { anime } from '$lib/server/anime';
 export const GET: RequestHandler = async ({ url }) => {
     const { page, perPage } = getPaginationParamsFromURL(url)
 
-    const { results, currentPage, hasNextPage, totalPages } = await anime.fetchRecentEpisodes("gogoanime", page)
+    console.log("PAGEEE", page);
+    
 
-    return json({ currentPage, hasNextPage, perPage, totalPages, results });
+    // const { results, currentPage, hasNextPage, totalPages } = await anime.fetchRecentEpisodes("zoro", page)
+
+    try {
+        const { results, currentPage, hasNextPage, totalPages } = await anime.fetchRecentEpisodes();
+        return json({ currentPage, hasNextPage, perPage, totalPages, results });
+    } catch (error) {
+        const res = await fetch('https://api.consumet.org/meta/anilist/recent-episodes');
+        const data = await res.json();
+        return json({ currentPage: data.currentPage, hasNextPage: data.hasNextPage, perPage, totalPages: data.totalPages, results: data.results });
+    }
 };
