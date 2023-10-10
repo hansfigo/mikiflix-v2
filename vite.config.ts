@@ -8,7 +8,7 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	server:{
 		host:"0.0.0.0",
-		port:3000,
+		port:5173,
 	},
 	preview:{
 		port:3001

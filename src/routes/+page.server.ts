@@ -9,34 +9,38 @@ export const load = (async ({ fetch }) => {
     const getRecentAnime = async (): Promise<ApiCallResult<RecentAnime>> => {
         const cached = await redis.get('recent')
 
-        redis.del('recent')
 
         if (cached) {
             console.log("CACHE HIT (recent)");
 
-            console.log("EEEEE",
-                JSON.parse(cached)
-            );
+            const data = JSON.parse(cached)
 
-            return JSON.parse(cached);
+            console.log("EEEEE", data);
+
+            if(data.results){
+                return data
+            }
         }
 
         console.log("CACHE MISS (recent)");
 
         let data
+
         try {
             const res = await fetch('/api/recent');
             data = await res.json();
         } catch (error) {
             console.log(error);
-            
+
             const res = await fetch('https://api.consumet.org/meta/anilist/recent-episodes');
             data = await res.json();
             console.log("RECENT", data);
         }
-   
+
         // Store the data in Redis with a TTL of 30 seconds
         redis.set('recent', JSON.stringify(data), 'EX', 1800);
+
+
 
         return data;
     }
@@ -68,7 +72,14 @@ export const load = (async ({ fetch }) => {
 
         if (cached) {
             console.log("CACHE HIT (trending)");
-            return JSON.parse(cached)
+
+            const data = JSON.parse(cached)
+
+            console.log("EEEEE", data);
+
+            if(data.results){
+                return data
+            }
         }
 
         console.log("CACHE MISS (trending)");
