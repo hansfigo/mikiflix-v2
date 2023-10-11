@@ -38,9 +38,9 @@
 
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
-	onMount(async () => {
-		await locomotiveScroll();
-	});
+	// onMount(async () => {
+	// 	await locomotiveScroll();
+	// });
 </script>
 
 <svelte:window class="overflow-x-hidden" />
