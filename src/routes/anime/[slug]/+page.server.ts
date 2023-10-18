@@ -4,35 +4,72 @@ import { redirect } from '@sveltejs/kit';
 import { redis } from '$lib/server/Redis';
 
 export const load: PageServerLoad = async ({ params, fetch }) => {
-2
-    const id = params.slug
+    const id = params.slug;
 
     if (!id || id === '') {
-        throw redirect(300, '/')
+        throw redirect(300, '/');
     }
+
+    const originalApiUrl = `/api/info/${id}`;
+    const fallbackApiUrl = `https://api.consumet.org/meta/anilist/info/${id}`;
 
     const getAnimeInfo = async (): Promise<AnimeInfo> => {
-        const cached = await redis.get(id)
+        // Membuat AbortController
+        const controller = new AbortController();
+        const { signal } = controller;
 
+        // Set timeout 8 menit (480 detik)
+        const timeout = 8000;
 
-        if (cached) {
-            console.log("CACHE HIT (anime info : ", id, ")");
+        let data
 
-            return JSON.parse(cached)
+        try {
+            const res = await fetch(originalApiUrl, { signal });
+            data = await res.json();
+
+            redis.set(id, JSON.stringify(data), 'EX', 600);
+
+            return data;
+        } catch (error: any) {
+            console.log(error);
+
+            // Jika waktu habis, coba fetch ke URL cadangan
+            if (error.name === 'AbortError') {
+                console.log("Timeout tercapai. Mencoba URL cadangan...");
+
+                // Menggunakan Promise.race untuk menangani timeout
+                const fallbackRequest = fetch(fallbackApiUrl);
+                const timeoutPromise = new Promise((_, reject) =>
+                    setTimeout(() => {
+                        reject(new Error("Timeout tercapai"));
+                        controller.abort();
+                    }, timeout)
+                );
+
+                try {
+                    const result = await Promise.race([fallbackRequest, timeoutPromise]);
+                    if (result instanceof Response) {
+                        const data = await result.json();
+
+                        redis.set(id, JSON.stringify(data), 'EX', 600);
+
+                        return data;
+                    }
+                } catch (fallbackError) {
+                    console.error('Terjadi kesalahan saat mencoba URL cadangan:', fallbackError);
+                    throw new Error('Gagal mengambil data dari URL cadangan');
+                }
+            } else {
+                // Tangani kesalahan lainnya
+                console.error('Terjadi kesalahan saat mencoba URL asal:', error);
+                throw new Error('Gagal mengambil data dari URL asal');
+            }
         }
-
-        console.log("CACHE MISS (anime info : ", id);
-
-        const res = await fetch(`/api/info/${id}`)
-
-        const data = await res.json()
-
-        redis.set(id, JSON.stringify(data), 'EX', 600)
-
         return data
-    }
+    };
+
     return {
         id: id,
-        info: getAnimeInfo(),
+        info: await getAnimeInfo(), // Pastikan untuk menunggu hasil dari getAnimeInfo()
     };
 };
