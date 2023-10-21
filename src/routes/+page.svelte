@@ -5,7 +5,13 @@
 
 	const recentAnimePopupData = data.recentPopups;
 	const recentAnime = data.recent.results;
-	const trendingAnime = data.trending.results.splice(2, 8);
+	const trendingAnime =
+		data.trending.results.length >= 3 ? data.trending.results.splice(2, 8) : data.trending.results;
+
+		console.log(data.trending.results.length);
+		
+
+	let isBackendError = data.trending.results.length <= 3 || recentAnime.length <= 5 ? true : false;
 
 	import { browser } from '$app/environment';
 	import AnimeCard from '$lib/components/AnimeCard.svelte';
@@ -38,6 +44,36 @@
 			{error.message}
 		{/await}
 	</section>
+
+	{#if isBackendError}
+		<div class="px-8">
+			<aside class="alert variant-filled-error mt-12">
+				<!-- Icon -->
+				<div>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+						/>
+					</svg>
+				</div>
+				<!-- Message -->
+				<div class="alert-message">
+					<h3 class="h3 font-semibold">Unstable Server</h3>
+					<p>The backend server is currently experiencing issues because it only displays a limited selection of anime.</p>
+				</div>
+				<!-- Actions -->
+			</aside>
+		</div>
+	{/if}
 
 	<!-- {#await data.popular.results}
 		Loading...
