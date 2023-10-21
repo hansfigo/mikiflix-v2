@@ -5,10 +5,10 @@
 
 	const recentAnimePopupData = data.recentPopups;
 	const recentAnime = data.recent.results;
-	const trendingAnime =
-		data.trending.results.length >= 3 ? data.trending.results.splice(2, 8) : data.trending.results;
+	const trendingAnime = data.trending.results;
 
-		console.log(data.trending.results.length);
+
+
 		
 
 	let isBackendError = data.trending.results.length <= 3 || recentAnime.length <= 5 ? true : false;

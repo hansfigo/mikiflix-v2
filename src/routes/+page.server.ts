@@ -29,7 +29,6 @@ export const load = (async ({ fetch }) => {
 
         try {
             const res = await fetch(apiUrl + '/recent-episode');
-            console.log("URL : "), apiUrl;
 
             try {
                 data = await res.json();
@@ -38,15 +37,12 @@ export const load = (async ({ fetch }) => {
 
                 return data;
             } catch (err) {
-                console.log(await res.text());
-
                 redis.del('recent')
                 throw error(500, {
                     message: "Cache Problem, Please Refresh Page"
                 })
             }
         } catch (err) {
-            console.log(err);
 
             throw error(500, {
                 message: "Cache Problem, Please Refresh Page"
@@ -103,9 +99,11 @@ export const load = (async ({ fetch }) => {
         const res = await fetch(apiUrl + '/trending')
         const data = await res.json();
 
-        console.log("TRENDING", data);
+        console.log("trending Cokkk");
+        
+        console.log("TRENDING", data.results.length);
 
-        redis.set('trending', JSON.stringify(data), 'EX', 1800);
+        // redis.set('trending', JSON.stringify(data), 'EX', 1800);
 
         return data
     }
