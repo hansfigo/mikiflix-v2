@@ -10,11 +10,11 @@
 </svelte:head>
 
 <div class="pt-20">
-	<h1 class="px-8 pb-4">Search Results for <span>'{data.query}'</span></h1>
+	<h1 class="px-8 pb-6">Search Results for <span>'{data.query}'</span></h1>
 	{#await data.search.results}
 		Loading...
 	{:then value}
-		<div class="flex gap-4 flex-wrap justify-center">
+		<div class="px-8  flex gap-4 flex-wrap justify-start">
 			{#each value as anime, i}
 				<AnimeCard animeList={data.search.results} {i} popupData={data.popup[i]} />
 			{/each}

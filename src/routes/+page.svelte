@@ -7,10 +7,6 @@
 	const recentAnime = data.recent.results;
 	const trendingAnime = data.trending.results;
 
-
-
-		
-
 	let isBackendError = data.trending.results.length <= 3 || recentAnime.length <= 5 ? true : false;
 
 	import { browser } from '$app/environment';
@@ -30,25 +26,9 @@
 			<div class="placeholder h-52 w-screen animate-pulse" />
 		{/if}
 	</div>
-	<section>
-		<h1 class=" my-7">Recent Release</h1>
-		{#await recentAnime}
-			Loading...
-		{:then value}
-			<div class="flex gap-4 flex-wrap justify-center">
-				{#each value as anime, i}
-					<AnimeCard animeList={recentAnime} {i} popupData={recentAnimePopupData[i]} />
-				{/each}
-			</div>
-		{:catch error}
-			{error.message}
-		{/await}
-	</section>
-
 	{#if isBackendError}
 		<div class="px-8">
 			<aside class="alert variant-filled-error mt-12">
-				<!-- Icon -->
 				<div>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -68,12 +48,29 @@
 				<!-- Message -->
 				<div class="alert-message">
 					<h3 class="h3 font-semibold">Unstable Server</h3>
-					<p>The backend server is currently experiencing issues because it only displays a limited selection of anime.</p>
+					<p>
+						The backend server is currently experiencing issues so it only displays a limited
+						selection of anime. Otherwise other feature is safe
+					</p>
 				</div>
 				<!-- Actions -->
 			</aside>
 		</div>
 	{/if}
+	<section>
+		<h1 class=" my-7">Recent Release</h1>
+		{#await recentAnime}
+			Loading...
+		{:then value}
+			<div class="flex gap-4 flex-wrap justify-center">
+				{#each value as anime, i}
+					<AnimeCard animeList={recentAnime} {i} popupData={recentAnimePopupData[i]} />
+				{/each}
+			</div>
+		{:catch error}
+			{error.message}
+		{/await}
+	</section>
 
 	<!-- {#await data.popular.results}
 		Loading...

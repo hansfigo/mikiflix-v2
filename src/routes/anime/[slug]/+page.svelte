@@ -9,6 +9,7 @@
 	import Relations from './components/Relations.svelte';
 	import Characters from './components/Characters.svelte';
 	import AnimeCard from './components/AnimeCard.svelte';
+	import AlertUnderConstruction from './components/AlertUnderConstruction.svelte';
 
 	export let data: PageData;
 
@@ -19,7 +20,6 @@
 			current_data = data;
 
 			anim = current_data ? current_data.info : data.info;
-
 		})();
 
 	let isReadMore = false;
@@ -30,6 +30,9 @@
 </svelte:head>
 
 <div>
+	<div class="absolute bottom-12 w-[30%] z-50">
+		<AlertUnderConstruction />
+	</div>
 	<div class="w-screen h-72 relative border-2">
 		<div class="bg-black opacity-40 absolute w-full h-full" />
 		<img class="object-cover w-full h-full" src={anim.cover} alt="" />

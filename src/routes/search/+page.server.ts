@@ -23,8 +23,6 @@ export const load: PageServerLoad = async ({ url, fetch, setHeaders }) => {
             console.log("CACHE HIT (search : ", query, ")");
             try {
                 const data = JSON.parse(cached)
-                console.log(data);
-
                 return data
             } catch (err) {
                 redis.del(query)

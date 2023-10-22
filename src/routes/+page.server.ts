@@ -12,7 +12,6 @@ export const load = (async ({ fetch }) => {
     const getRecentAnime = async (): Promise<ApiCallResult<RecentAnime>> => {
         const cached = await redis.get('recent')
 
-
         if (cached) {
             console.log("CACHE HIT (recent)");
 
@@ -43,7 +42,6 @@ export const load = (async ({ fetch }) => {
                 })
             }
         } catch (err) {
-
             throw error(500, {
                 message: "Cache Problem, Please Refresh Page"
             })
@@ -52,7 +50,6 @@ export const load = (async ({ fetch }) => {
             // data = await res.json();
             // console.log("RECENT", data);
         }
-
 
     }
 
@@ -80,8 +77,6 @@ export const load = (async ({ fetch }) => {
 
         const cached = await redis.get('trending')
 
-
-
         if (cached) {
             console.log("CACHE HIT (trending)");
 
@@ -94,16 +89,10 @@ export const load = (async ({ fetch }) => {
 
         console.log("CACHE MISS (trending)");
 
-
-
         const res = await fetch(apiUrl + '/trending')
         const data = await res.json();
 
-        console.log("trending Cokkk");
-        
-        console.log("TRENDING", data.results.length);
-
-        // redis.set('trending', JSON.stringify(data), 'EX', 1800);
+        redis.set('trending', JSON.stringify(data), 'EX', 1800);
 
         return data
     }

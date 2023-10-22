@@ -8,7 +8,7 @@
 
 <div>
     <h1>Relation</h1>
-    <div class="flex flex-wrap gap-6 justify-center items-center pt-8">
+    <div class="flex flex-wrap gap-6 justify-start items-center pt-8">
         {#if anim.relations}
             {#each anim.relations as relation}
                 <AnimeCard {relation}/>
@@ -16,3 +16,9 @@
         {/if}
     </div>
 </div>
+
+<style>
+    h1{
+        @apply text-2xl font-semibold;
+    }
+</style>
