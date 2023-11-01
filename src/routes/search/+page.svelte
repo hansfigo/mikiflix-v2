@@ -14,7 +14,7 @@
 	{#await data.search.results}
 		Loading...
 	{:then value}
-		<div class="px-8  flex gap-4 flex-wrap justify-start">
+		<div class="px-8  w-full   flex gap-4 flex-wrap justify-between md:justify-start">
 			{#each value as anime, i}
 				<AnimeCard animeList={data.search.results} {i} popupData={data.popup[i]} />
 			{/each}

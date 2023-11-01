@@ -12,6 +12,8 @@ export const load = (async ({ fetch }) => {
     const getRecentAnime = async (): Promise<ApiCallResult<RecentAnime>> => {
         const cached = await redis.get('recent')
 
+
+
         if (cached) {
             console.log("CACHE HIT (recent)");
 
@@ -27,7 +29,7 @@ export const load = (async ({ fetch }) => {
         let data
 
         try {
-            const res = await fetch(apiUrl + '/recent-episode');
+            const res = await fetch(apiUrl + '/recent-episodes');
 
             try {
                 data = await res.json();

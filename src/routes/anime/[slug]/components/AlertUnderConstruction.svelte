@@ -1,5 +1,5 @@
-<div class="px-8">
-	<aside class="alert variant-filled-warning mt-12">
+<div class="px-8 w-fit">
+	<aside class="alert variant-filled-warning  mt-12">
 		<div>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -17,9 +17,10 @@
 			</svg>
 		</div>
 		<!-- Message -->
-		<div class="alert-message">
-			<h3 class="h3 font-semibold">Page Under Construction</h3>
-			<p>
+		<div class="alert-message ">
+			<h3 class="hidden	break-words md:block font-semibold">Page Under Construction</h3>
+			<h3 class="block md:hidden font-semibold">Under Construction</h3>
+			<p class="hidden md:block">
 				This page is currently under construction. Our team is working hard to bring you the best
 				content and experience.
 			</p>

@@ -18,7 +18,7 @@
 
 <a href={`/anime/${anim.id}`}>
 	<div
-		class="relative rounded-lg card-hover overflow-hidden w-40 flex justify-center flex-col items-center"
+		class="relative rounded-lg card-hover overflow-hidden w-32  md:w-40 flex md:justify-center flex-col items-center"
 		use:popup={popupData}
 	>
 		<AnimeCoverMobile {anim}/>
