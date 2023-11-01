@@ -27,7 +27,7 @@ export const load = (async ({ fetch }) => {
         let data
 
         try {
-            const res = await fetch(apiUrl + '/recent-episodes');
+            const res = await fetch(apiUrl + '/recent-episode');
 
             try {
                 data = await res.json();
