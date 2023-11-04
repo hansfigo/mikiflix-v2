@@ -37,16 +37,12 @@
 	});
 
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
-
-	// onMount(async () => {
-	// 	await locomotiveScroll();
-	// });
 </script>
 
-<svelte:window class="overflow-x-hidden" />
+<svelte:window class="overflow-hidden" />
 
 <div
-	class="flex flex-col h-screen justify-between md xl-screen overflow-scroll
+	class="flex flex-col h-screen justify-between md xl-screen 
 "
 	data-scroll-container
 >
