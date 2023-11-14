@@ -11,6 +11,10 @@
 <swiper-container
 	slides-per-view={1}
 	centered-slides={true}
+	autoplay={{
+		delay: 2000, // Delay in milliseconds (2 seconds)
+		disableOnInteraction: false // Allow interaction to stop autoplay
+	}}
 	pagination={{
 		hideOnClick: false,
 		clickable: true
@@ -42,7 +46,12 @@
 						</a>
 					</div>
 				</div>
-				<img class="object-cover h-[26rem] w-full relative" src={anime.cover} alt="" loading="lazy" />
+				<img
+					class="object-cover h-[26rem] w-full relative"
+					src={anime.cover}
+					alt=""
+					loading="lazy"
+				/>
 			</div>
 		</swiper-slide>
 	{/each}
