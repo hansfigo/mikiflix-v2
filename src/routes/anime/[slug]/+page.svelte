@@ -30,14 +30,14 @@
 </svelte:head>
 
 <div>
-	<div class="absolute bottom-12 w-[30%] z-50">
+	<!-- <div class="absolute bottom-12 w-[30%] z-50">
 		<AlertUnderConstruction />
-	</div>
-	<div class="w-screen h-72 relative border-2">
+	</div> -->
+	<div class="w-full h-72 relative border-2">
 		<div class="bg-black opacity-40 absolute w-full h-full" />
 		<img class="object-cover w-full h-full" src={anim.cover} alt="" />
 	</div>
-	<div class="flex justify-center w-full border-2">
+	<div class="flex justify-center w-full">
 		<div class="w-screen relative container hidden lg:flex flex-col border-red-200 border-2 gap-4">
 			<div class="flex flex-row gap-12 min-h-[24rem]">
 				<div class="min-w-[18rem] border-2 relative">

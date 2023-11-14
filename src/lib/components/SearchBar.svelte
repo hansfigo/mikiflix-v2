@@ -5,6 +5,8 @@
 
 	const input = writable('');
 
+	input.set('');
+
 	const errorToast: ToastSettings = {
 		message: 'Input tidak boleh kosong'
 	};
@@ -17,7 +19,6 @@
 		}
 
 		goto(`/search?q=${$input}`);
-		input.set('');
 	};
 </script>
 

@@ -23,9 +23,9 @@
 >
 	{#each trendingAnime as anime, i}
 		<swiper-slide lazy="true">
-			<div class="h-80 w-full relative">
+			<div class="h-[26rem] w-full relative">
 				<div class="bg-black opacity-60 absolute w-full h-full z-10" />
-				<div class="absolute z-10 top-24 left-4 sm:left-16 flex flex-col gap-2">
+				<div class="absolute z-10 bottom-24 left-4 sm:left-16 flex flex-col gap-2">
 					<h1 class="text-lg md:text-2xl line-clamp-2 font-semibold md:max-w-xl">
 						{anime.title?.romaji}
 					</h1>
@@ -42,7 +42,7 @@
 						</a>
 					</div>
 				</div>
-				<img class="object-cover h-80 w-full relative" src={anime.cover} alt="" loading="lazy" />
+				<img class="object-cover h-[26rem] w-full relative" src={anime.cover} alt="" loading="lazy" />
 			</div>
 		</swiper-slide>
 	{/each}

@@ -12,7 +12,7 @@
 
 </script>
 
-<svelte:window bind:scrollY={$y} />
+<svelte:window bind:scrollY={$y} class="overflow-x-hidden" />
 
 <nav
 	class={$y === 0
@@ -29,6 +29,7 @@
 		<div class="flex gap-4 items-center">
 			<SearchBar />
 		</div>
+		<!-- <img class="h-8" src="ic-search.png" alt=""> -->
 	</div>
 </nav>
 
@@ -37,6 +38,6 @@
 		@apply fixed  bg-surface-800 w-screen z-20;
 	}
 	.nav-top {
-		@apply fixed  bg-transparent w-screen z-20;
+		@apply fixed  bg-surface-800/30 backdrop-blur-sm w-screen z-20;
 	}
 </style>
