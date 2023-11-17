@@ -4,20 +4,22 @@
 	export let anim: AnimeInfo;
 
 	function capitalizeFirstLetter(word: string) {
-    if (typeof word !== 'string') {
-        return '';
+		if (typeof word !== 'string') {
+			return '';
 		}
-    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+		return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 	}
 </script>
 
-<section>
+<section class="mt-8">
 	<h1>Characters</h1>
-	<div class="flex flex-wrap gap-6 justify-between	 items-start pt-8 px-4">
+	<div class="flex flex-wrap gap-6 justify-between items-start pt-8">
 		{#if anim.characters}
 			{#each anim.characters as chara}
-				<div class="flex justify-between gap-x-3 p-5 w-[48%] max-h-48 h-48 border-[3px] border-white border-opacity-50 overflow-hidden rounded-xl">
-					<div class="max-w-[40%] h-full flex rounded-xl overflow-hidden">
+				<div
+					class="flex justify-between gap-x-3 p-5 w-[48%] max-h-48 h-48 border-[2px] border-white/10 overflow-hidden rounded-md"
+				>
+					<div class="max-w-[40%] h-full flex rounded-md overflow-hidden">
 						<img class="object-cover" src={chara.image} alt={chara.name.first} />
 					</div>
 					<div class="flex flex-col mr-8 justify-between items-start">
@@ -32,9 +34,13 @@
 					{:else}
 						<p>No Data</p>
 					{/if}
-					<div class="max-w-[40%] h-full flex rounded-xl overflow-hidden">
+					<div class="max-w-[40%] h-full flex rounded-md overflow-hidden">
 						{#if chara.voiceActors && chara.voiceActors[0] && chara.voiceActors[0].name}
-							<img class="object-cover" src={chara.voiceActors[0].image} alt={chara.voiceActors[0].image} />
+							<img
+								class="object-cover"
+								src={chara.voiceActors[0].image}
+								alt={chara.voiceActors[0].image}
+							/>
 						{/if}
 					</div>
 				</div>

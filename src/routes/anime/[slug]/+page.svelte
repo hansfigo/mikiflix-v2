@@ -33,18 +33,18 @@
 	<!-- <div class="absolute bottom-12 w-[30%] z-50">
 		<AlertUnderConstruction />
 	</div> -->
-	<div class="w-full h-72 relative border-2">
+	<div class="w-full h-72 relative ">
 		<div class="bg-black opacity-40 absolute w-full h-full" />
 		<img class="object-cover w-full h-full" src={anim.cover} alt="" />
 	</div>
 	<div class="flex justify-center w-full">
-		<div class="w-screen relative container hidden lg:flex flex-col border-red-200 border-2 gap-4">
+		<div class="w-screen relative container hidden lg:flex flex-col  gap-4">
 			<div class="flex flex-row gap-12 min-h-[24rem]">
-				<div class="min-w-[18rem] border-2 relative">
+				<div class="min-w-[18rem]  relative">
 					<AnimeCover {anim} />
 				</div>
 				<div
-					class="relative border-2 pt-12 flex flex-col justify-between items-start gap-4 h-full w-full overflow-hidden pb-4"
+					class="relative  pt-12 flex flex-col justify-between items-start gap-4 h-full w-full overflow-hidden pb-4"
 				>
 					<div class="flex items-baseline gap-2">
 						<h1 class="">{anim.title?.romaji}</h1>
@@ -52,7 +52,7 @@
 					</div>
 					<div class="flex gap-4">
 						{#each anim.genres ?? [] as genre}
-							<span class="chip variant-ghost-success">{genre}</span>
+							<span class="chip border-[1px] border-blue-700 bg-blue-600/20 text-blue-100" >{genre}</span>
 						{/each}
 					</div>
 					<div
@@ -62,17 +62,17 @@
 					>
 						<SvelteMarkdown source={anim.description} />
 					</div>
-					<div class="pt-12 pb-4 w-full border-2">
+					<div class="pt-12 pb-4 w-full ">
 						<Tabs />
 					</div>
 				</div>
 			</div>
-			<div class="w-full border-2 flex gap-12">
+			<div class="w-full  flex gap-12">
 				<div class="min-w-[18rem] border-2 h-full bg-slate-800 px-4 py-8">
 					<AnimeDetails {anim} />
 				</div>
 
-				<div class="w-full border-2">
+				<div class="w-full ">
 					<div>
 						<h1>Trailer</h1>
 						<iframe
@@ -84,9 +84,9 @@
 					</div>
 					<Relations {anim} />
 					<Characters {anim} />
-					<section>
+					<section class="flex flex-col items-baseline justify-start mt-8">
 						<h1>Recomendation</h1>
-						<div class="flex flex-wrap gap-6 justify-center items-center pt-8">
+						<div class="flex flex-wrap gap-6 justify-between items-center pt-8">
 							{#if anim.recommendations}
 								{#each anim.recommendations as recommend}
 									<AnimeCard relation={recommend} />
