@@ -3,30 +3,36 @@
 
 	export let anim: AnimeInfo;
 
+	function capitalizeFirstLetter(word: string) {
+    if (typeof word !== 'string') {
+        return '';
+		}
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+	}
 </script>
 
 <section>
 	<h1>Characters</h1>
-	<div class="flex flex-wrap gap-6 justify-start items-start pt-8">
+	<div class="flex flex-wrap gap-6 justify-between	 items-start pt-8 px-4">
 		{#if anim.characters}
 			{#each anim.characters as chara}
-				<div class="flex gap-x-3 max-h-40 h-40 border-2 border-white overflow-hidden">
-					<div class="max-w-[40%] h-full flex">
+				<div class="flex justify-between gap-x-3 p-5 w-[48%] max-h-48 h-48 border-[3px] border-white border-opacity-50 overflow-hidden rounded-xl">
+					<div class="max-w-[40%] h-full flex rounded-xl overflow-hidden">
 						<img class="object-cover" src={chara.image} alt={chara.name.first} />
 					</div>
 					<div class="flex flex-col mr-8 justify-between items-start">
 						<p>{chara.name.full}</p>
-						<p>{chara.role}</p>
+						<p class="opacity-50">{capitalizeFirstLetter(chara.role)}</p>
 					</div>
 					{#if chara.voiceActors && chara.voiceActors[0] && chara.voiceActors[0].name}
 						<div class="flex flex-col justify-between items-end">
 							<p>{chara.voiceActors[0].name.full}</p>
-							<p>{chara.voiceActors[0].language}</p>
+							<p class="opacity-50">{chara.voiceActors[0].language}</p>
 						</div>
 					{:else}
 						<p>No Data</p>
 					{/if}
-					<div class="max-w-[40%] h-full flex">
+					<div class="max-w-[40%] h-full flex rounded-xl overflow-hidden">
 						{#if chara.voiceActors && chara.voiceActors[0] && chara.voiceActors[0].name}
 							<img class="object-cover" src={chara.voiceActors[0].image} alt={chara.voiceActors[0].image} />
 						{/if}
