@@ -12,19 +12,13 @@ export const load = (async ({ fetch }) => {
     const getRecentAnime = async (): Promise<ApiCallResult<RecentAnime>> => {
         const cached = await redis.get('recent')
 
-
-
         if (cached) {
-            console.log("CACHE HIT (recent)");
-
             const data = JSON.parse(cached)
 
             if (data.results) {
                 return data
             }
         }
-
-        console.log("CACHE MISS (recent)");
 
         let data
 
@@ -74,22 +68,17 @@ export const load = (async ({ fetch }) => {
     // }
 
     const getTrendingAnime = async (): Promise<ApiCallResult<Anime>> => {
-        // await redis.del('trending')
         redis.del('trending')
 
         const cached = await redis.get('trending')
 
         if (cached) {
-            console.log("CACHE HIT (trending)");
-
             const data = JSON.parse(cached)
 
             if (data.results) {
                 return data
             }
         }
-
-        console.log("CACHE MISS (trending)");
 
         const res = await fetch(apiUrl + '/trending')
         const data = await res.json();

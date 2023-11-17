@@ -23,7 +23,7 @@
 		{#if browser}
 			<Carousel {trendingAnime} />
 		{:else}
-			<div class="placeholder h-52 w-screen animate-pulse" />
+			<div class="placeholder h-52 w-screen animate-pulse" >HellPPPPPo</div>
 		{/if}
 	</div>
 	{#if isBackendError}

@@ -14,7 +14,6 @@
 	import { Flip } from 'gsap/dist/Flip';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { gsap } from 'gsap/dist/gsap';
-	import { onMount } from 'svelte';
 	import locomotiveScroll from '$lib/utils/locomotiveScroll';
 
 	gsap.registerPlugin(Flip, ScrollTrigger);

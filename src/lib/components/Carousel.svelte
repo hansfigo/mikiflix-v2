@@ -6,6 +6,7 @@
 	register();
 
 	export let trendingAnime: Anime[];
+
 </script>
 
 <swiper-container
@@ -36,7 +37,9 @@
 					<div
 						class="prose lg:prose prose-p:text-white line-clamp-4 prose-p:md:text-sm prose-p:text-[12px]"
 					>
-						<SvelteMarkdown source={anime.description} />
+						{#if anime.description}
+							<SvelteMarkdown source={anime.description} />
+						{/if}
 					</div>
 					<div class="h-8 w-12">
 						<a href={`/anime/${anime.id}`}>
