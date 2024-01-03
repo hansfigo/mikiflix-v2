@@ -1,13 +1,14 @@
-import type { Anime, ApiCallResult, PopularAnime, RecentAnime } from '$lib/types/anime';
-import type { PopupSettings } from '@skeletonlabs/skeleton';
-import type { PageServerLoad } from './$types';
 import { generatePopupData } from '$lib/server/GetPopupData';
 import { redis } from '$lib/server/Redis';
-import { env } from '$env/dynamic/private';
 import { apiUrl } from '$lib/stores/url';
+import type { Anime, ApiCallResult, PopularAnime, RecentAnime } from '$lib/types/anime';
+import type { PopupSettings } from '@skeletonlabs/skeleton';
 import { error } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 
 export const load = (async ({ fetch }) => {
+
+    console.log(apiUrl);
 
     const getRecentAnime = async (): Promise<ApiCallResult<RecentAnime>> => {
         const cached = await redis.get('recent')
@@ -23,6 +24,7 @@ export const load = (async ({ fetch }) => {
         let data
 
         try {
+            
             const res = await fetch(apiUrl + '/recent-episodes');
 
             try {
@@ -38,8 +40,10 @@ export const load = (async ({ fetch }) => {
                 })
             }
         } catch (err) {
+            // console.log(err,toString());
+            
             throw error(500, {
-                message: "Cache Problem, Please Refresh Page"
+                message: "Error Fething Data on Server, Please Again Later" 
             })
 
             // const res = await fetch('https://api.consumet.org/meta/anilist/recent-episodes');
@@ -80,7 +84,7 @@ export const load = (async ({ fetch }) => {
             }
         }
 
-        const res = await fetch(apiUrl + '/trending')
+        const res = await fetch(apiUrl + '/popular')
         const data = await res.json();
 
         redis.set('trending', JSON.stringify(data), 'EX', 1800);
