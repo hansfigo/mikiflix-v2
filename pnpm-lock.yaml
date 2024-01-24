@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@consumet/extensions':
-    specifier: ^1.5.0
-    version: 1.5.0
+    specifier: github:consumet/consumet.ts
+    version: github.com/consumet/consumet.ts/4af480abbdfe9dd3d1870e3de0dcca4663d1f5af
   '@floating-ui/dom':
     specifier: ^1.4.5
     version: 1.4.5
@@ -125,18 +125,6 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.18
-
-  /@consumet/extensions@1.5.0:
-    resolution: {integrity: sha512-y2IUlvAFOtE0QlL3+6NRQzA1npXrKQE4zOkmwbI4yjeSrv7a7tcehQro3MOmwpbsTD+YHFkwFxCy4YyA2jD72Q==}
-    dependencies:
-      ascii-url-encoder: 1.2.0
-      axios: 0.27.2
-      cheerio: 1.0.0-rc.12
-      crypto-js: 4.1.1
-      form-data: 4.0.0
-    transitivePeerDependencies:
-      - debug
-    dev: false
 
   /@esbuild/android-arm64@0.18.17:
     resolution: {integrity: sha512-9np+YYdNDed5+Jgr1TdWBsozZ85U1Oa3xW0c7TWqH0y2aGghXtZsuT8nYRbzOMcl0bXZXjOGbksoTtVOlWrRZg==}
@@ -3029,3 +3017,19 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  github.com/consumet/consumet.ts/4af480abbdfe9dd3d1870e3de0dcca4663d1f5af:
+    resolution: {tarball: https://codeload.github.com/consumet/consumet.ts/tar.gz/4af480abbdfe9dd3d1870e3de0dcca4663d1f5af}
+    name: '@consumet/extensions'
+    version: 1.5.5
+    prepare: true
+    requiresBuild: true
+    dependencies:
+      ascii-url-encoder: 1.2.0
+      axios: 0.27.2
+      cheerio: 1.0.0-rc.12
+      crypto-js: 4.1.1
+      form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
