@@ -32,9 +32,6 @@ const random = (arr: any[]) => {
 export const GET: RequestHandler = async ({ params }) => {
     const { searchParams } = params as Params;
 
-    console.log(searchParams, TMDB_API_KEY);
-
-
     const res = await fetch(API.search + searchParams, {
         headers: {
             Authorization: `Bearer ${TMDB_API_KEY}`,
@@ -48,5 +45,5 @@ export const GET: RequestHandler = async ({ params }) => {
 
     const img = await getTMDBBgImage(id)
 
-    return json(+random(img.backdrops).file_path);
+    return json(random(img.backdrops).file_path);
 };

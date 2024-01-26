@@ -1,5 +1,5 @@
+import { gogo } from '$lib/server/anime';
 import { GOGO_URI } from '$lib/utils/constant';
-import { ANIME } from '@consumet/extensions';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler, RouteParams } from './$types';
 
@@ -13,7 +13,6 @@ const API = {
 }
 
 const getAnimeId = async (query: string) => {
-
     const search = await fetch(API.search + query);
     const data = await search.json()
 
@@ -28,20 +27,21 @@ const getAnimeInfo = async (id: string) => {
 
 
 export const GET: RequestHandler = async ({ params }) => {
-
     const { query } = params as Params
 
     try {
-        const id = await getAnimeId(query)
-        const animeInfoRes = await getAnimeInfo(id)
+        const id = await gogo.search(query)
 
-        return json(animeInfoRes);
+        console.log(id);
+        
+        // const id = await getAnimeId(query)
+        // const animeInfoRes = await getAnimeInfo(id)
+
+        return json(id);
     } catch (error) {
         const search = await fetch('https://consumet-api-production-e852.up.railway.app/anime/search/' + query);
         const data = await search.json()
         const res = data.results
         return json(res);
     }
-
-
 };
