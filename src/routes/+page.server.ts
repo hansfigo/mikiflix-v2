@@ -8,8 +8,6 @@ import type { PageServerLoad } from './$types';
 
 export const load = (async ({ fetch }) => {
 
-    console.log(apiUrl);
-
     const getRecentAnime = async (): Promise<ApiCallResult<RecentAnime>> => {
         const cached = await redis.get('recent')
 
