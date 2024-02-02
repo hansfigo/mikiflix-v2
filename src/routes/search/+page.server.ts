@@ -1,9 +1,10 @@
-import type { PageServerLoad } from './$types';
-import type { Anime, ApiCallResult } from '$lib/types/anime';
-import { error, redirect } from '@sveltejs/kit';
 import { generatePopupData } from '$lib/server/GetPopupData';
 import { getParsedCacheData, redis } from '$lib/server/Redis';
 import { apiUrl } from '$lib/stores/url';
+import type { Anime, ApiCallResult } from '$lib/types/anime';
+import { CONSUMET_ANILIST_URL } from '$lib/utils/constant';
+import { error, redirect } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url, fetch, setHeaders }) => {
 
@@ -36,11 +37,11 @@ export const load: PageServerLoad = async ({ url, fetch, setHeaders }) => {
         console.log("CACHE MISS (search : ", query, ")");
 
         // Fetch data from endpoint
-        const res = await fetch(apiUrl + `${query}`)
+        const res = await fetch(CONSUMET_ANILIST_URL + `${query}`)
 
         if (!res.ok) {
             console.log("Error");
-            
+
             throw error(500, {
                 message: "Error Occured Please Reload Page"
             })
@@ -53,13 +54,13 @@ export const load: PageServerLoad = async ({ url, fetch, setHeaders }) => {
         newHeaders.set('cache-control', cacheControlValue);
 
 
-        
+
 
         try {
             const data = await res.json()
 
             console.log(data);
-            
+
 
 
             redis.set(query, JSON.stringify(data), "EX", 600)
@@ -67,7 +68,7 @@ export const load: PageServerLoad = async ({ url, fetch, setHeaders }) => {
             return data
         } catch (err) {
             console.log("Error");
-            
+
             redis.del(query)
             throw error(500, {
                 message: "Error Occured Please Reload Page"

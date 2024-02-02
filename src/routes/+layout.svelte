@@ -1,20 +1,20 @@
 <script lang="ts">
-	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Navbar from '$lib/components/Navbar.svelte';
 	import '@skeletonlabs/skeleton/styles/skeleton.css';
 
-	import '../theme.css';
 	import '../app.css';
+	import '../theme.css';
 
-	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
+	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 	import { Toast, storePopup } from '@skeletonlabs/skeleton';
 
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 
+	import locomotiveScroll from '$lib/utils/locomotiveScroll';
 	import { Flip } from 'gsap/dist/Flip';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { gsap } from 'gsap/dist/gsap';
-	import locomotiveScroll from '$lib/utils/locomotiveScroll';
 
 	gsap.registerPlugin(Flip, ScrollTrigger);
 
@@ -41,8 +41,7 @@
 <svelte:window class="overflow-hidden" />
 
 <div
-	class="flex flex-col h-screen justify-between md xl-screen 
-"
+	class="flex flex-col h-screen justify-between md xl-screen"
 	data-scroll-container
 >
 	<Toast />
