@@ -1,15 +1,14 @@
 <script lang="ts">
-	import { navigating } from '$app/stores';
+	import { navigating, page } from '$app/stores';
+	import logo from '$lib/images/favicon.svg';
 	import { ProgressBar } from '@skeletonlabs/skeleton';
 	import { writable } from 'svelte/store';
-	import { page } from '$app/stores';
 	import SearchBar from './SearchBar.svelte';
 
 	const y = writable(0);
 
 	$: isHome = $page.route.id === '/' ? true : false;
 	$: isNavbarShow = $y < 220 ? true : false;
-
 </script>
 
 <svelte:window bind:scrollY={$y} class="overflow-x-hidden" />
@@ -24,7 +23,7 @@
 	{/if}
 	<div class="flex items-center justify-between w-full px-8 py-3">
 		<a href="/">
-			<img class="h-8 w-8" src="favicon.svg" alt="" />
+			<img class="h-8 w-8" src={logo} alt="" />
 		</a>
 		<div class="flex gap-4 items-center">
 			<SearchBar />

@@ -1,6 +1,4 @@
 <script lang="ts">
-	import Footer from '$lib/components/Footer.svelte';
-	import Navbar from '$lib/components/Navbar.svelte';
 	import '@skeletonlabs/skeleton/styles/skeleton.css';
 
 	import '../app.css';
@@ -11,6 +9,8 @@
 
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 
+	import Footer from '$lib/components/shared/Footer.svelte';
+	import Navbar from '$lib/components/shared/Navbar/Navbar.svelte';
 	import locomotiveScroll from '$lib/utils/locomotiveScroll';
 	import { Flip } from 'gsap/dist/Flip';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';

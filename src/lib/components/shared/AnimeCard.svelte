@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Anime, RecentAnime } from '$lib/types/anime';
 	import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
-	import Star from './icons/star.svelte';
-	import AnimeCoverMobile from './anime-card/AnimeCoverMobile.svelte';
-	import AnimeCoverDesktop from './anime-card/AnimeCoverDesktop.svelte';
+	import AnimeCoverDesktop from '../anime-card/AnimeCoverDesktop.svelte';
+	import AnimeCoverMobile from '../anime-card/AnimeCoverMobile.svelte';
+	import Star from '../icons/star.svelte';
 
 	export let popupData: PopupSettings;
 	export let i: number;

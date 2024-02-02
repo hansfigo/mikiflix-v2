@@ -10,8 +10,8 @@
 	let isBackendError = data.trending.results.length <= 3 || recentAnime.length <= 5 ? true : false;
 
 	import { browser } from '$app/environment';
-	import AnimeCard from '$lib/components/AnimeCard.svelte';
-	import Carousel from '$lib/components/Carousel.svelte';
+	import AnimeCard from '$lib/components/shared/AnimeCard.svelte';
+	import Carousel from '$lib/components/shared/Carousel.svelte';
 </script>
 
 <svelte:head>
@@ -53,7 +53,6 @@
 						selection of anime. Otherwise other feature is safe
 					</p>
 				</div>
-				<!-- Actions -->
 			</aside>
 		</div>
 	{/if}
