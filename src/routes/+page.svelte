@@ -57,7 +57,7 @@
 			</aside>
 		</div>
 	{/if}
-	<section>
+	<section class="px-8">
 		<h1 class=" my-7">Recent Release</h1>
 		{#await recentAnime}
 			Loading...
