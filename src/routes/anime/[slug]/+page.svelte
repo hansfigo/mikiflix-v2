@@ -33,7 +33,7 @@
 	</div> -->
 	<div class="w-full h-72 relative">
 		<div class="bg-black opacity-40 absolute w-full h-full" />
-		<img class="object-cover w-full h-full" src={anim.cover} alt="" />
+		<img class="object-cover w-full h-full bg-gray-700 border-0" src={anim.cover} alt="" />
 	</div>
 	<div class="flex justify-center w-full">
 		<div class="w-screen relative container hidden lg:flex flex-col gap-4">

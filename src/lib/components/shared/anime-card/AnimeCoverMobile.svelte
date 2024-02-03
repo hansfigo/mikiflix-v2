@@ -2,23 +2,11 @@
 	import type { AnimeInfo } from '$lib/types/anime';
 
 	export let anim: AnimeInfo;
-
-	let isImageLoaded = false;
-
-	function handleImageLoad() {
-		isImageLoaded = true;
-	}
 </script>
 
 <div class="cover relative w-full h-full md:hidden" data-flip-id={`img-${anim.id}-mob`}>
-	<section
-		class="absolute h-full w-full bg-gradient-to-t from-surface-600 opacity-80"
-		data-flip-id={`mask-${anim.id}`}
-	/>
-	<img class="rounded-lg" src={anim.image} alt="Anime Cover" on:load={handleImageLoad} />
-	{#if isImageLoaded}
-		<div class="rounded-lg bg-gray-800"/>
-	{/if}
+	<section class="absolute h-full w-full bg-gradient-to-t from-surface-600 opacity-80" />
+	<img class="rounded-lg" src={anim.image} alt="Anime Cover" />
 </div>
 
 <style>
