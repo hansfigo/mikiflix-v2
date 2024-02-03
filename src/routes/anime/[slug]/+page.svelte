@@ -1,15 +1,15 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import type { AnimeInfo } from '$lib/types/anime';
-	import type { PageData } from './$types';
 	import SvelteMarkdown from 'svelte-markdown';
-	import Tabs from './components/Tabs.svelte';
+	import type { PageData } from './$types';
+	import AlertUnderConstruction from './components/AlertUnderConstruction.svelte';
+	import AnimeCard from './components/AnimeCard.svelte';
 	import AnimeCover from './components/AnimeCover.svelte';
 	import AnimeDetails from './components/AnimeDetails.svelte';
-	import { goto } from '$app/navigation';
-	import Relations from './components/Relations.svelte';
 	import Characters from './components/Characters.svelte';
-	import AnimeCard from './components/AnimeCard.svelte';
-	import AlertUnderConstruction from './components/AlertUnderConstruction.svelte';
+	import Relations from './components/Relations.svelte';
+	import Tabs from './components/Tabs.svelte';
 
 	export let data: PageData;
 
@@ -33,18 +33,18 @@
 	<!-- <div class="absolute bottom-12 w-[30%] z-50">
 		<AlertUnderConstruction />
 	</div> -->
-	<div class="w-full h-72 relative ">
+	<div class="w-full h-72 relative">
 		<div class="bg-black opacity-40 absolute w-full h-full" />
 		<img class="object-cover w-full h-full" src={anim.cover} alt="" />
 	</div>
 	<div class="flex justify-center w-full">
-		<div class="w-screen relative container hidden lg:flex flex-col  gap-4">
+		<div class="w-screen relative container hidden lg:flex flex-col gap-4">
 			<div class="flex flex-row gap-12 min-h-[24rem]">
-				<div class="min-w-[18rem]  relative">
+				<div class="min-w-[18rem] relative">
 					<AnimeCover {anim} />
 				</div>
 				<div
-					class="relative  pt-12 flex flex-col justify-between items-start gap-4 h-full w-full overflow-hidden pb-4"
+					class="relative pt-12 flex flex-col justify-between items-start gap-4 h-full w-full overflow-hidden pb-4"
 				>
 					<div class="flex items-baseline gap-2">
 						<h1 class="">{anim.title?.romaji}</h1>
@@ -52,7 +52,9 @@
 					</div>
 					<div class="flex gap-4">
 						{#each anim.genres ?? [] as genre}
-							<span class="chip border-[1px] border-blue-700 bg-blue-600/20 text-blue-100" >{genre}</span>
+							<span class="chip border-[1px] border-blue-700 bg-blue-600/20 text-blue-100"
+								>{genre}</span
+							>
 						{/each}
 					</div>
 					<div
@@ -62,17 +64,17 @@
 					>
 						<SvelteMarkdown source={anim.description} />
 					</div>
-					<div class="pt-12 pb-4 w-full ">
+					<div class="pt-12 pb-4 w-full">
 						<Tabs />
 					</div>
 				</div>
 			</div>
-			<div class="w-full  flex gap-12">
+			<div class="w-full flex gap-12">
 				<div class="min-w-[18rem] border-2 h-full bg-slate-800 px-4 py-8">
 					<AnimeDetails {anim} />
 				</div>
 
-				<div class="w-full ">
+				<div class="w-full">
 					<div>
 						<h1>Trailer</h1>
 						<iframe
@@ -104,7 +106,11 @@
 					class="cover max-w-[18rem] rounded-lg shadow-lg relative overflow-hidden z-10"
 					data-flip-id={`img-${anim.id}-mob`}
 				>
-					<img src={anim.image} alt={anim.title?.romaji} />
+					<img
+						class="max-w-[18rem] min-w-[18rem] h-[26rem] bg-gray-800"
+						src={anim.image}
+						alt={anim.title?.romaji}
+					/>
 				</div>
 			</div>
 
