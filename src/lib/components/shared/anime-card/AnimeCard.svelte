@@ -1,24 +1,20 @@
 <script lang="ts">
+	import Star from '$lib/components/icons/star.svelte';
 	import type { Anime, RecentAnime } from '$lib/types/anime';
 	import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
-	import AnimeCoverDesktop from '../anime-card/AnimeCoverDesktop.svelte';
-	import AnimeCoverMobile from '../anime-card/AnimeCoverMobile.svelte';
-	import Star from '../icons/star.svelte';
+	import AnimeCoverDesktop from './AnimeCoverDesktop.svelte';
+	import AnimeCoverMobile from './AnimeCoverMobile.svelte';
 
 	export let popupData: PopupSettings;
 	export let i: number;
 	export let animeList: (Anime | RecentAnime)[];
 
-	function isAnime(item: Anime | RecentAnime): item is Anime {
-		return 'description' in item;
-	}
-
 	$: anim = animeList[i];
 </script>
 
-<a href={`/anime/${anim.id}`}>
+<a href={`/anime/${anim.id}`} >
 	<div
-		class="relative rounded-lg card-hover overflow-hidden w-32  md:w-40 flex md:justify-center flex-col items-center"
+		class="relative rounded-lg card-hover  w-32  md:w-40 flex md:justify-center flex-col items-center"
 		use:popup={popupData}
 	>
 		<AnimeCoverMobile {anim}/>

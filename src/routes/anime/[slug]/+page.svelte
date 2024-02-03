@@ -1,9 +1,7 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import type { AnimeInfo } from '$lib/types/anime';
 	import SvelteMarkdown from 'svelte-markdown';
 	import type { PageData } from './$types';
-	import AlertUnderConstruction from './components/AlertUnderConstruction.svelte';
 	import AnimeCard from './components/AnimeCard.svelte';
 	import AnimeCover from './components/AnimeCover.svelte';
 	import AnimeDetails from './components/AnimeDetails.svelte';

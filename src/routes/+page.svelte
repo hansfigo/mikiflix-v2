@@ -10,8 +10,8 @@
 	let isBackendError = data.trending.results.length <= 3 || recentAnime.length <= 5 ? true : false;
 
 	import { browser } from '$app/environment';
-	import AnimeCard from '$lib/components/shared/AnimeCard.svelte';
 	import Carousel from '$lib/components/shared/Carousel.svelte';
+	import AnimeCard from '$lib/components/shared/anime-card/AnimeCard.svelte';
 </script>
 
 <svelte:head>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AnimeCard from '$lib/components/shared/AnimeCard.svelte';
+	import AnimeCard from '$lib/components/shared/anime-card/AnimeCard.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
