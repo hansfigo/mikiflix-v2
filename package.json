@@ -48,6 +48,6 @@
 		"locomotive-scroll": "^4.1.4",
 		"svelte-icons": "^2.1.0",
 		"svelte-markdown": "^0.3.0",
-		"swiper": "^10.0.4"
+		"swiper": "^10.3.1"
 	}
 }
