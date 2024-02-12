@@ -29,7 +29,7 @@ export interface Anime {
 }
 
 export interface AnimeInfo {
-    id?: string;
+    id: string;
     title?: {
         romaji?: string;
         english?: string;

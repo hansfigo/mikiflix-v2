@@ -1,9 +1,7 @@
 import { generatePopupData } from '$lib/server/GetPopupData';
 import { redis } from '$lib/server/Redis';
-import { apiUrl } from '$lib/stores/url';
 import type { Anime, ApiCallResult, PopularAnime, RecentAnime } from '$lib/types/anime';
 import { CONSUMET_API_BASE_URL } from '$lib/utils/constant';
-import type { PopupSettings } from '@skeletonlabs/skeleton';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
@@ -39,8 +37,6 @@ export const load = (async ({ fetch }) => {
                 })
             }
         } catch (err) {
-            // console.log(err,toString());
-
             throw error(500, {
                 message: "Error Fething Data on Server, Please Again Later"
             })
