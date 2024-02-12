@@ -5,8 +5,7 @@
 	import Relations from '../components/Relations.svelte';
 
 	import { getContext } from 'svelte';
-	const anim : AnimeInfo = getContext('anime-detail-context');
-
+	const anim: AnimeInfo = getContext('anime-detail-context');
 </script>
 
 <section>
@@ -20,7 +19,9 @@
 		/>
 	</div>
 	<Relations {anim} />
-	<Characters {anim} />
+	{#if anim.characters}
+		<Characters characters={(anim.characters).slice(0, 6)} />
+	{/if}
 	<section class="flex flex-col items-baseline justify-start mt-8">
 		<h1>Recomendation</h1>
 		<div class="flex flex-wrap gap-6 justify-between items-center pt-8">
@@ -32,4 +33,3 @@
 		</div>
 	</section>
 </section>
-
