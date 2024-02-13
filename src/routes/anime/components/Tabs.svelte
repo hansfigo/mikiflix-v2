@@ -26,7 +26,7 @@
 <style lang="postcss">
 	 .active {
         @apply border-b-2 border-blue-700;
-        transition: border-bottom-color 0.6s ease; /* Tambahkan transisi pada warna border-bottom */
+        transition: border-bottom-color 0.62s ease; /* Tambahkan transisi pada warna border-bottom */
     }
 
     a {
