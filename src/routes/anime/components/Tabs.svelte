@@ -13,23 +13,27 @@
 		{ text: 'characters', href: `/anime/characters/${id}` },
 		{ text: 'episodes', href: `/anime/episodes/${id}` }
 	];
+
+	function capitalizeFirstLetter(str : string) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
 </script>
 
 <div class="flex w-full justify-between">
 	{#each tabs as tab}
 		<a class={$isTabActiveStore[tab.text] ? 'active' : ''} data-sveltekit-noscroll href={tab.href}
-			>{tab.text}</a
+			>{capitalizeFirstLetter(tab.text)}</a
 		>
 	{/each}
 </div>
 
 <style lang="postcss">
-	 .active {
-        @apply border-b-2 border-blue-700;
-        transition: border-bottom-color 0.62s ease; /* Tambahkan transisi pada warna border-bottom */
-    }
+	.active {
+		@apply border-b-2 border-blue-700;
+		transition: border-bottom-color 0.62s ease; /* Tambahkan transisi pada warna border-bottom */
+	}
 
-    a {
-        @apply border-b-2 py-2 border-transparent;
-    }
+	a {
+		@apply border-b-2 py-2 border-transparent text-lg font-semibold;
+	}
 </style>
