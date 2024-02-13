@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { isTabActiveStore } from '$lib/stores/animeInfoTab';
 	import type { AnimeInfo } from '$lib/types/anime';
 	import AnimeCard from '../components/AnimeCard.svelte';
 	import Characters from '../components/Characters.svelte';
@@ -6,6 +7,14 @@
 
 	import { getContext } from 'svelte';
 	const anim: AnimeInfo = getContext('anime-detail-context');
+
+	isTabActiveStore.update(()=>{
+		return {
+			overview : true,
+			characters : false,
+			episodes : false
+		}
+	})
 </script>
 
 <section>
