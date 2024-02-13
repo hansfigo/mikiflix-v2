@@ -32,11 +32,11 @@
 	</div>
 </nav>
 
-<style>
+<style lang="postcss">
 	.nav-class {
-		@apply fixed  bg-surface-800 w-screen z-20;
+		@apply fixed bg-surface-800 w-screen z-20;
 	}
 	.nav-top {
-		@apply fixed  bg-surface-800/30 backdrop-blur-sm w-screen z-20;
+		@apply fixed bg-surface-800/30 backdrop-blur-sm w-screen z-20;
 	}
 </style>

@@ -2,8 +2,8 @@
 	<p>2024 Mikiflix Team</p>
 </div>
 
-<style>
-    p{
-        @apply text-xs font-thin;
-    }
+<style lang="postcss">
+	p {
+		@apply text-xs font-thin;
+	}
 </style>

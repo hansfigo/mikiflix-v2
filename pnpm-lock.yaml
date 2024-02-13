@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@consumet/extensions':
-    specifier: github:consumet/consumet.ts
-    version: github.com/consumet/consumet.ts/4af480abbdfe9dd3d1870e3de0dcca4663d1f5af
+    specifier: ^1.5.4
+    version: 1.5.4
   '@floating-ui/dom':
     specifier: ^1.4.5
     version: 1.4.5
@@ -38,16 +38,16 @@ dependencies:
 
 devDependencies:
   '@playwright/test':
-    specifier: ^1.28.1
+    specifier: ^1.36.2
     version: 1.36.2
   '@skeletonlabs/skeleton':
     specifier: ^1.10.0
     version: 1.10.0(svelte@4.1.1)
   '@sveltejs/adapter-auto':
-    specifier: ^2.0.0
+    specifier: ^2.1.0
     version: 2.1.0(@sveltejs/kit@1.22.3)
   '@sveltejs/kit':
-    specifier: ^1.20.4
+    specifier: ^1.22.3
     version: 1.22.3(svelte@4.1.1)(vite@4.4.7)
   '@tailwindcss/forms':
     specifier: ^0.5.4
@@ -59,52 +59,52 @@ devDependencies:
     specifier: ^4.1.0
     version: 4.1.0
   '@typescript-eslint/eslint-plugin':
-    specifier: ^5.45.0
+    specifier: ^5.62.0
     version: 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.45.0)(typescript@5.1.6)
   '@typescript-eslint/parser':
-    specifier: ^5.45.0
+    specifier: ^5.62.0
     version: 5.62.0(eslint@8.45.0)(typescript@5.1.6)
   autoprefixer:
     specifier: ^10.4.14
     version: 10.4.14(postcss@8.4.27)
   eslint:
-    specifier: ^8.28.0
+    specifier: ^8.45.0
     version: 8.45.0
   eslint-config-prettier:
-    specifier: ^8.5.0
+    specifier: ^8.8.0
     version: 8.8.0(eslint@8.45.0)
   eslint-plugin-svelte:
-    specifier: ^2.30.0
+    specifier: ^2.32.4
     version: 2.32.4(eslint@8.45.0)(svelte@4.1.1)
   postcss:
-    specifier: ^8.4.24
+    specifier: ^8.4.27
     version: 8.4.27
   postcss-load-config:
     specifier: ^4.0.1
     version: 4.0.1(postcss@8.4.27)
   prettier:
-    specifier: ^2.8.0
+    specifier: ^2.8.8
     version: 2.8.8
   prettier-plugin-svelte:
     specifier: ^2.10.1
     version: 2.10.1(prettier@2.8.8)(svelte@4.1.1)
   svelte:
-    specifier: ^4.0.5
+    specifier: ^4.1.1
     version: 4.1.1
   svelte-check:
-    specifier: ^3.4.3
+    specifier: ^3.4.6
     version: 3.4.6(postcss-load-config@4.0.1)(postcss@8.4.27)(svelte@4.1.1)
   tailwindcss:
-    specifier: ^3.3.2
+    specifier: ^3.3.3
     version: 3.3.3
   tslib:
-    specifier: ^2.4.1
+    specifier: ^2.6.1
     version: 2.6.1
   typescript:
-    specifier: ^5.0.0
+    specifier: ^5.1.6
     version: 5.1.6
   vite:
-    specifier: ^4.4.2
+    specifier: ^4.4.7
     version: 4.4.7
 
 packages:
@@ -125,6 +125,18 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.18
+
+  /@consumet/extensions@1.5.4:
+    resolution: {integrity: sha512-uAuuDR10CrZLGN7YRXaeclTnObTN2eB3Dwk8q8qWx5XFxsGoo8iJ5rJO8iK5DVZ5Gbu8tRKPegxj9/XkP7Tnzw==}
+    dependencies:
+      ascii-url-encoder: 1.2.0
+      axios: 0.27.2
+      cheerio: 1.0.0-rc.12
+      crypto-js: 4.1.1
+      form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /@esbuild/android-arm64@0.18.17:
     resolution: {integrity: sha512-9np+YYdNDed5+Jgr1TdWBsozZ85U1Oa3xW0c7TWqH0y2aGghXtZsuT8nYRbzOMcl0bXZXjOGbksoTtVOlWrRZg==}
@@ -943,7 +955,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.9
-      caniuse-lite: 1.0.30001517
+      caniuse-lite: 1.0.30001587
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -1014,7 +1026,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001517
+      caniuse-lite: 1.0.30001587
       electron-to-chromium: 1.4.471
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.9)
@@ -1045,8 +1057,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /caniuse-lite@1.0.30001517:
-    resolution: {integrity: sha512-Vdhm5S11DaFVLlyiKu4hiUTkpZu+y1KA/rZZqVQfOD5YdDT/eQKlkt7NaE0WGOFgX32diqt9MiP9CAiFeRklaA==}
+  /caniuse-lite@1.0.30001587:
+    resolution: {integrity: sha512-HMFNotUmLXn71BQxg8cijvqxnIAofforZOwGsxyXJ0qugTdspUF4sPSJ2vhgprHCB996tIDzEq1ubumPDV8ULA==}
     dev: true
 
   /chalk@4.1.2:
@@ -1093,7 +1105,7 @@ packages:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /chownr@2.0.0:
@@ -1609,6 +1621,14 @@ packages:
 
   /fsevents@2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -2478,7 +2498,7 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   /run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
@@ -2960,7 +2980,7 @@ packages:
       postcss: 8.4.27
       rollup: 3.26.3
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   /vitefu@0.2.4(vite@4.4.7):
     resolution: {integrity: sha512-fanAXjSaf9xXtOOeno8wZXIhgia+CZury481LsDaV++lSvcU2R9Ch2bPh3PYFyoHW+w9LqAeYRISVQjUIew14g==}
@@ -3017,19 +3037,3 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
-
-  github.com/consumet/consumet.ts/4af480abbdfe9dd3d1870e3de0dcca4663d1f5af:
-    resolution: {tarball: https://codeload.github.com/consumet/consumet.ts/tar.gz/4af480abbdfe9dd3d1870e3de0dcca4663d1f5af}
-    name: '@consumet/extensions'
-    version: 1.5.5
-    prepare: true
-    requiresBuild: true
-    dependencies:
-      ascii-url-encoder: 1.2.0
-      axios: 0.27.2
-      cheerio: 1.0.0-rc.12
-      crypto-js: 4.1.1
-      form-data: 4.0.0
-    transitivePeerDependencies:
-      - debug
-    dev: false

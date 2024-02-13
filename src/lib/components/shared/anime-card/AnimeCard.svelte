@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Star from '$lib/components/icons/star.svelte';
-	import type { Anime, RecentAnime } from '$lib/types/anime';
+	import type { Anime, AnimeInfo, RecentAnime } from '$lib/types/anime';
 	import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
 	import AnimeCoverDesktop from './AnimeCoverDesktop.svelte';
 	import AnimeCoverMobile from './AnimeCoverMobile.svelte';

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { AnimeInfo } from '$lib/types/anime';
+	import type { Anime } from '$lib/types/anime';
 
-	export let anim: AnimeInfo;
+	export let anim: Anime;
 </script>
 
 <div class="cover relative w-full h-full hidden md:block" data-flip-id={`img-${anim.id}`}>
