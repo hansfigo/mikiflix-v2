@@ -80,7 +80,7 @@ export interface AnimeInfo {
   recommendations?: Recommendation[]
 }
 
-interface Episode {
+export interface Episode {
   id: string;
   title: string | null;
   description: string | null;
