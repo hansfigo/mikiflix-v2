@@ -18,7 +18,6 @@ export const load: LayoutServerLoad = async ({ params, fetch }) => {
 
         if (cached) {
             console.log("CACHE HIT (anime info : ", id, ")");
-            return JSON.parse(cached)
         }
 
         console.log("CACHE MISS (anime info : ", id);
