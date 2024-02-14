@@ -1,3 +1,4 @@
+import type { AnimeInfo } from "$lib/types/anime";
 import { writable } from "svelte/store";
 
 export const isTabActiveStore = writable({
@@ -5,3 +6,5 @@ export const isTabActiveStore = writable({
     characters : false,
     episodes : false
 })
+
+export const animeDetailStore = writable<AnimeInfo>()

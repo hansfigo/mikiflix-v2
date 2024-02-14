@@ -1,9 +1,6 @@
 <script lang="ts">
-	import { isTabActiveStore } from '$lib/stores/animeInfoTab';
-	import type { AnimeInfo } from '$lib/types/anime';
-	import { getContext } from 'svelte';
+	import { animeDetailStore, isTabActiveStore } from '$lib/stores/animeInfoTab';
 	import Characters from '../../components/Characters.svelte';
-	const anim: AnimeInfo = getContext('anime-detail-context');
 
 
     isTabActiveStore.update(()=>{
@@ -15,6 +12,6 @@
 	})
 </script>
 
-{#if anim.characters}
-    <Characters characters={anim.characters} />
+{#if $animeDetailStore.characters}
+    <Characters characters={$animeDetailStore.characters} />
 {/if}

@@ -1,12 +1,8 @@
 <script lang="ts">
-	import { isTabActiveStore } from '$lib/stores/animeInfoTab';
-	import type { AnimeInfo } from '$lib/types/anime';
+	import { animeDetailStore, isTabActiveStore } from '$lib/stores/animeInfoTab';
 	import AnimeCard from '../components/AnimeCard.svelte';
 	import Characters from '../components/Characters.svelte';
 	import Relations from '../components/Relations.svelte';
-
-	import { getContext } from 'svelte';
-	const anim: AnimeInfo = getContext('anime-detail-context');
 
 	isTabActiveStore.update(() => {
 		return {
@@ -24,19 +20,19 @@
 			class="pt-6 w-full"
 			width="420"
 			height="315"
-			src={`https://www.youtube.com/embed/${anim.trailer?.id}`}
-			title={anim.trailer?.id}
+			src={`https://www.youtube.com/embed/${$animeDetailStore.trailer?.id}`}
+			title={$animeDetailStore.trailer?.id}
 		/>
 	</div>
-	<Relations {anim} />
-	{#if anim.characters}
-		<Characters characters={anim.characters.slice(0, 6)} />
+	<Relations anim={$animeDetailStore} />
+	{#if $animeDetailStore.characters}
+		<Characters characters={$animeDetailStore.characters.slice(0, 6)} />
 	{/if}
 	<section class="flex flex-col items-baseline justify-start">
 		<h1>Recomendation</h1>
 		<div class="flex flex-wrap gap-6 justify-between items-center pt-8">
-			{#if anim.recommendations}
-				{#each anim.recommendations as recommend}
+			{#if $animeDetailStore.recommendations}
+				{#each $animeDetailStore.recommendations as recommend}
 					<AnimeCard relation={recommend} />
 				{/each}
 			{/if}
