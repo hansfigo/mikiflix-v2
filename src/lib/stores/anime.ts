@@ -31,7 +31,7 @@ export const useAnime = () => {
         return fetchData(url);
     };
 
-    const getStreamingLinks = async (id: number) => {
+    const getStreamingLinks = async (id: string) => {
         const url = `${CONSUMET_API_BASE_URL}meta/anilist/watch/${id}`;
         return fetchData(url);
     };

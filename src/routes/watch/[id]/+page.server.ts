@@ -1,9 +1,13 @@
+import { useAnime } from "$lib/stores/anime";
 import type { PageServerLoad } from "./$types";
 
-export const load = (async ({params}) => {
+const anime = useAnime()
 
-    const {id} = params
+export const load = (async ({ params }) => {
 
-    // const
-    return {};
+    const { id } = params
+
+    const data = await anime.getStreamingLinks(id)
+
+    return { episodes: data.sources };
 }) satisfies PageServerLoad;
