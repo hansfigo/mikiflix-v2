@@ -1,11 +1,14 @@
 import { generatePopupData } from '$lib/server/GetPopupData';
 import { redis } from '$lib/server/Redis';
+import { useAnime } from '$lib/stores/anime';
 import type { Anime, ApiCallResult, PopularAnime, RecentAnime } from '$lib/types/anime';
 import { CONSUMET_API_BASE_URL } from '$lib/utils/constant';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ fetch }) => {
+
+    const anime = useAnime()
 
     const getRecentAnime = async (): Promise<ApiCallResult<RecentAnime>> => {
         const cached = await redis.get('recent')
@@ -18,34 +21,18 @@ export const load = (async ({ fetch }) => {
             }
         }
 
-        let data
-
         try {
+            const data = await anime.getRecentAnime()
 
-            const res = await fetch(CONSUMET_API_BASE_URL + 'meta/anilist' + '/recent-episodes');
+            redis.set('recent', JSON.stringify(data), 'EX', 1800);
 
-            try {
-                data = await res.json();
-
-                redis.set('recent', JSON.stringify(data), 'EX', 1800);
-
-                return data;
-            } catch (err) {
-                redis.del('recent')
-                throw error(500, {
-                    message: "Cache Problem, Please Refresh Page"
-                })
-            }
+            return data;
         } catch (err) {
+            redis.del('recent')
             throw error(500, {
-                message: "Error Fething Data on Server, Please Again Later"
+                message: "Cache Problem, Please Refresh Page"
             })
-
-            // const res = await fetch('https://api.consumet.org/meta/anilist/recent-episodes');
-            // data = await res.json();
-            // console.log("RECENT", data);
         }
-
     }
 
     // const getPopularAnime = async (): Promise<ApiCallResult<PopularAnime>> => {
