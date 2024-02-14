@@ -99,3 +99,11 @@ html.has-scroll-dragging {
     right: auto;
     bottom: 0;
 }
+
+video{
+    @apply w-full h-full !important;
+}
+
+.video-js {
+    @apply max-w-[100vw] w-screen flex h-[60vh] overflow-hidden !important;
+}

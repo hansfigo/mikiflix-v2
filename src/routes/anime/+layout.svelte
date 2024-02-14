@@ -1,13 +1,10 @@
 <script lang="ts">
+	import { animeDetailStore } from '$lib/stores/animeInfoTab';
 	import type { AnimeInfo } from '$lib/types/anime';
-	import { setContext } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import type { LayoutData } from './$types';
-	import AnimeCard from './components/AnimeCard.svelte';
 	import AnimeCover from './components/AnimeCover.svelte';
 	import AnimeDetails from './components/AnimeDetails.svelte';
-	import Characters from './components/Characters.svelte';
-	import Relations from './components/Relations.svelte';
 	import Tabs from './components/Tabs.svelte';
 
 	export let data: LayoutData;
@@ -20,7 +17,7 @@
 
 			anim = current_data ? current_data.info : data.info;
 
-			setContext('anime-detail-context', anim);
+			animeDetailStore.set(anim)
 		})();
 
 	let isReadMore = false;
