@@ -7,80 +7,69 @@ import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url, fetch, setHeaders }) => {
+	const query = url.searchParams.get('q');
 
-    const query = url.searchParams.get('q')
+	if (!query || query === '') {
+		throw redirect(300, '/');
+	}
 
-    if (!query || query === '') {
-        throw redirect(300, '/')
-    }
+	const getSearchedAnime = async (): Promise<ApiCallResult<Anime>> => {
+		const cached = await redis.get(query);
+		redis.del(query);
 
+		if (cached) {
+			console.log('CACHE HIT (search : ', query, ')');
+			try {
+				const data = JSON.parse(cached);
+				return data;
+			} catch (err) {
+				redis.del(query);
+				throw error(500, {
+					message: 'Error Occured Please Reload Page'
+				});
+			}
+		}
 
-    const getSearchedAnime = async (): Promise<ApiCallResult<Anime>> => {
+		console.log('CACHE MISS (search : ', query, ')');
 
-        const cached = await redis.get(query)
-        redis.del(query)
+		// Fetch data from endpoint
+		const res = await fetch(CONSUMET_ANILIST_URL + `${query}`);
 
-        if (cached) {
-            console.log("CACHE HIT (search : ", query, ")");
-            try {
-                const data = JSON.parse(cached)
-                return data
-            } catch (err) {
-                redis.del(query)
-                throw error(500, {
-                    message: "Error Occured Please Reload Page"
-                })
-            }
+		if (!res.ok) {
+			console.log('Error');
 
-        }
+			throw error(500, {
+				message: 'Error Occured Please Reload Page'
+			});
+		}
 
-        console.log("CACHE MISS (search : ", query, ")");
+		const ttl = await redis.ttl(query);
+		const cacheControlValue = `max-age=${ttl}`;
 
-        // Fetch data from endpoint
-        const res = await fetch(CONSUMET_ANILIST_URL + `${query}`)
+		const newHeaders = new Headers(res.headers);
+		newHeaders.set('cache-control', cacheControlValue);
 
-        if (!res.ok) {
-            console.log("Error");
+		try {
+			const data = await res.json();
 
-            throw error(500, {
-                message: "Error Occured Please Reload Page"
-            })
-        }
+			console.log(data);
 
-        const ttl = await redis.ttl(query);
-        const cacheControlValue = `max-age=${ttl}`;
+			redis.set(query, JSON.stringify(data), 'EX', 600);
 
-        const newHeaders = new Headers(res.headers);
-        newHeaders.set('cache-control', cacheControlValue);
+			return data;
+		} catch (err) {
+			console.log('Error');
 
+			redis.del(query);
+			throw error(500, {
+				message: 'Error Occured Please Reload Page'
+			});
+		}
+	};
 
-
-
-        try {
-            const data = await res.json()
-
-            console.log(data);
-
-
-
-            redis.set(query, JSON.stringify(data), "EX", 600)
-
-            return data
-        } catch (err) {
-            console.log("Error");
-
-            redis.del(query)
-            throw error(500, {
-                message: "Error Occured Please Reload Page"
-            })
-        }
-
-
-    }
-
-    return {
-        query: query,
-        popup: generatePopupData(getSearchedAnime()),
-        search: getSearchedAnime(),
-    };
+	return {
+		query: query,
+		popup: generatePopupData(getSearchedAnime()),
+		search: getSearchedAnime()
+	};
 };
