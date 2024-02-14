@@ -8,19 +8,20 @@
 	import { getContext } from 'svelte';
 	const anim: AnimeInfo = getContext('anime-detail-context');
 
-	isTabActiveStore.update(()=>{
+	isTabActiveStore.update(() => {
 		return {
-			overview : true,
-			characters : false,
-			episodes : false
-		}
-	})
+			overview: true,
+			characters: false,
+			episodes: false
+		};
+	});
 </script>
 
-<section>
+<section class="flex flex-col gap-10">
 	<div>
 		<h1>Trailer</h1>
 		<iframe
+			class="pt-6 w-full"
 			width="420"
 			height="315"
 			src={`https://www.youtube.com/embed/${anim.trailer?.id}`}
@@ -29,9 +30,9 @@
 	</div>
 	<Relations {anim} />
 	{#if anim.characters}
-		<Characters characters={(anim.characters).slice(0, 6)} />
+		<Characters characters={anim.characters.slice(0, 6)} />
 	{/if}
-	<section class="flex flex-col items-baseline justify-start mt-8">
+	<section class="flex flex-col items-baseline justify-start">
 		<h1>Recomendation</h1>
 		<div class="flex flex-wrap gap-6 justify-between items-center pt-8">
 			{#if anim.recommendations}
@@ -42,3 +43,9 @@
 		</div>
 	</section>
 </section>
+
+<style lang="postcss">
+	h1 {
+		@apply text-2xl font-semibold;
+	}
+</style>

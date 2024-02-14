@@ -5,10 +5,6 @@
 	export let relation: Relation | Recommendation;
 
 	let isImageLoaded = false;
-
-	function handleImageLoad() {
-		isImageLoaded = true;
-	}
 </script>
 
 <button on:click={() => goto(`/anime/${relation.id}`, { invalidateAll: true })}>
@@ -18,7 +14,7 @@
 			data-flip-id={`img-${relation.id}`}
 		>
 			<section class="absolute h-full w-full bg-gradient-to-t from-surface-600 opacity-80" />
-			<img class="rounded-lg" src={relation.image} alt="Anime Cover" on:load={handleImageLoad}/>
+			<img class="rounded-lg" src={relation.image} alt="Anime Cover"/>
 		</div>
 		<section class="absolute bottom-4 left-2 break-words text-xs">
 			{relation.title?.romaji}

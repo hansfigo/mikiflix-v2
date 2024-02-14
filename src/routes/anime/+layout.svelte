@@ -68,7 +68,7 @@
 				</div>
 			</div>
 			<div class="w-full flex gap-12">
-				<div class="min-w-[18rem] border-2 h-full bg-slate-800 px-4 py-8">
+				<div class="min-w-[18rem]  h-full border-white/10  rounded-md py-8">
 					<AnimeDetails {anim} />
 				</div>
 
