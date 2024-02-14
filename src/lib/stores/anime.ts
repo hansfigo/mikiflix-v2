@@ -1,4 +1,4 @@
-import { CONSUMET_API_BASE_URL } from "$lib/utils/constant";
+import { CONSUMET_ANILIST_URL, CONSUMET_API_BASE_URL } from "$lib/utils/constant";
 import { error } from '@sveltejs/kit';
 
 // function animeProvider() {
@@ -37,7 +37,7 @@ export const useAnime = () => {
 
     async function getDetailAnime(id: number) {
         try {
-            const res = await fetch(`${CONSUMET_API_BASE_URL}meta/anilist/recent-episodes`);
+            const res = await fetch(`${CONSUMET_ANILIST_URL}info/${id}`);
             const data = await res.json();
 
             return data;
