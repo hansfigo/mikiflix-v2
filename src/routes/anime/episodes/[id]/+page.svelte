@@ -15,5 +15,5 @@
 </script>
 
 {#if anim.episodes}
-	<EpisodeCard episodes={anim.episodes} />
+	<EpisodeCard animeId={anim.id} episodes={anim.episodes} />
 {/if}

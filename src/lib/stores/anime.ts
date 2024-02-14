@@ -26,7 +26,7 @@ export const useAnime = () => {
         return fetchData(url);
     };
 
-    const getDetailAnime = async (id: number) => {
+    const getDetailAnime = async (id: string) => {
         const url = `${CONSUMET_ANILIST_URL}info/${id}`;
         return fetchData(url);
     };

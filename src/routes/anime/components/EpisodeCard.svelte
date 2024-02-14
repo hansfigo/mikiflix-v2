@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Episode } from '$lib/types/anime';
+	export let animeId : string;
 	export let episodes: Episode[];
 </script>
 
@@ -7,7 +8,7 @@
 	<div class="flex flex-wrap gap-6 justify-between items-start pt-8">
 		{#each episodes as ep}
 			<a
-				href={`/watch/${ep.id}`}
+				href={`/watch/${animeId}/${ep.id}`}
 				class="relative flex justify-between gap-x-3 w-[48%] max-h-48 h-48 border-[2px] border-white/10 overflow-hidden rounded-md"
 			>
 				<div
