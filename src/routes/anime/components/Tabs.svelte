@@ -1,26 +1,13 @@
 <script lang="ts">
-	import { isTabActiveStore } from '$lib/stores/animeInfoTab';
+	import { isTabActiveStore, tabStore } from '$lib/stores/animeInfoTab';
 
-	export let id: String;
-
-	interface Tab {
-		text: 'overview' | 'characters' | 'episodes';
-		href: string;
-	}
-
-	const tabs: Tab[] = [
-		{ text: 'overview', href: `/anime/${id}` },
-		{ text: 'characters', href: `/anime/characters/${id}` },
-		{ text: 'episodes', href: `/anime/episodes/${id}` }
-	];
-
-	function capitalizeFirstLetter(str : string) {
+	function capitalizeFirstLetter(str: string) {
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	}
 </script>
 
 <div class="flex w-full justify-between">
-	{#each tabs as tab}
+	{#each $tabStore as tab}
 		<a class={$isTabActiveStore[tab.text] ? 'active' : ''} data-sveltekit-noscroll href={tab.href}
 			>{capitalizeFirstLetter(tab.text)}</a
 		>

@@ -4,20 +4,23 @@ import { json, type RequestHandler } from '@sveltejs/kit';
 import type { RouteParams } from './$types';
 
 interface Params extends RouteParams {
-  query: string;
+	query: string;
 }
 
 export const GET: RequestHandler = async ({ url, params, setHeaders }) => {
+	const { query } = params;
 
-  const { query } = params
+	const { page, perPage } = getPaginationParamsFromURL(url);
 
-  const { page, perPage } = getPaginationParamsFromURL(url)
+	const { results, currentPage, hasNextPage, totalPages } = await anime.search(
+		query!,
+		page,
+		perPage
+	);
 
-  const { results, currentPage, hasNextPage, totalPages } = await anime.search(query!, page, perPage)
+	setHeaders({
+		'cache-control': 'max-age=60'
+	});
 
-  setHeaders({
-    "cache-control": "max-age=60",
-  });
-
-  return json({ currentPage, hasNextPage, perPage, totalPages, results });
+	return json({ currentPage, hasNextPage, perPage, totalPages, results });
 };

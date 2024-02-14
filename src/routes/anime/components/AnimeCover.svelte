@@ -2,6 +2,9 @@
 	import type { AnimeInfo } from '$lib/types/anime';
 
 	export let anim: AnimeInfo = {} as AnimeInfo;
+
+	console.log("COVERRRR");
+	
 </script>
 
 <div

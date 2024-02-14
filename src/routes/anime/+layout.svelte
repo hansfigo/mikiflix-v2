@@ -11,13 +11,16 @@
 
 	let current_data;
 	let anim: AnimeInfo;
+	let id: string;
 	$: data,
 		(() => {
 			current_data = data;
 
 			anim = current_data ? current_data.info : data.info;
 
-			animeDetailStore.set(anim)
+			id = anim.id;
+
+			animeDetailStore.set(anim);
 		})();
 
 	let isReadMore = false;
@@ -60,13 +63,13 @@
 						<SvelteMarkdown source={anim.description} />
 					</div>
 					<div class="pt-12 pb-4 w-full">
-						<Tabs id={anim.id}/>
+						<Tabs />
 					</div>
 				</div>
 			</div>
 			<div class="w-full flex gap-12">
-				<div class="min-w-[18rem]  h-full border-white/10  rounded-md py-8">
-					<AnimeDetails {anim} />
+				<div class="min-w-[18rem] h-full border-white/10 rounded-md py-8">
+					<AnimeDetails/>
 				</div>
 
 				<div class="w-full">
