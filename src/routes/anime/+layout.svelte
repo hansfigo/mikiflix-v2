@@ -35,17 +35,17 @@
 		<div class="bg-black opacity-40 absolute w-full h-full" />
 		<img class="object-cover w-full h-full bg-gray-700 border-0" src={anim.cover} alt="" />
 	</div>
-	<div class="flex justify-center w-full">
-		<div class="w-screen relative container hidden lg:flex flex-col gap-4">
-			<div class="flex flex-row gap-12 min-h-[24rem]">
-				<div class="min-w-[18rem] relative">
+	<div class="flex justify-center w-full px-8 md:px-0">
+		<div class="w-screen relative container lg:flex flex-col gap-4">
+			<div class="flex flex-col md:flex-row gap-12 min-h-[24rem]">
+				<div class="min-w-full md:min-w-[18rem] relative">
 					<AnimeCover {anim} />
 				</div>
 				<div
-					class="relative pt-12 flex flex-col justify-between items-start gap-4 h-full w-full overflow-hidden pb-4"
+					class="relative  pt-12 md:flex flex-col  justify-between items-start gap-4 flex h-full w-full overflow-hidden pb-4"
 				>
 					<div class="flex items-baseline gap-2">
-						<h1 class="">{anim.title?.romaji}</h1>
+						<h1>{anim.title?.romaji}</h1>
 						<p class="text-sm">{anim.releaseDate}</p>
 					</div>
 					<div class="flex gap-4">
@@ -67,8 +67,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="w-full flex gap-12">
-				<div class="min-w-[18rem] h-full border-white/10 rounded-md py-8">
+			<div class=" w-full flex gap-12">
+				<div class="min-w-[18rem] hidden md:block h-full border-white/10 rounded-md py-8">
 					<AnimeDetails/>
 				</div>
 
@@ -76,7 +76,7 @@
 					<slot />
 				</div>
 			</div>
-
+<!-- 
 			<div class=" w-screen relative container flex flex-col lg:hidden">
 				<div class="absolute top-[-8rem] left-0 right-0 w-ful flex justify-center">
 					<div
@@ -100,13 +100,13 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>
 
 <style lang="postcss">
 	h1 {
-		@apply text-center font-semibold text-xl md:text-3xl;
+		@apply text-center font-semibold text-2xl md:text-3xl;
 	}
 
 	.cover {

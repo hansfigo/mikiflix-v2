@@ -8,7 +8,7 @@
 
 <div>
 	<h1>Relation</h1>
-	<div class="flex flex-wrap gap-6 justify-between items-center pt-8">
+	<div class="flex flex-wrap gap-6 justify-between items-center pt-8 ">
 		{#if anim.relations}
 			{#each anim.relations as relation}
 				<AnimeCard {relation} />

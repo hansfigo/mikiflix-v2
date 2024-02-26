@@ -9,10 +9,10 @@
 		{#each episodes as ep}
 			<a
 				href={`/watch/${animeId}/${ep.id}`}
-				class="relative flex justify-between gap-x-3 w-[48%] max-h-48 h-48 border-[2px] border-white/10 overflow-hidden rounded-md"
+				class="relative flex justify-between gap-x-3 w-full md:w-[48%] max-h-48 h-48 border-[2px] border-white/10 overflow-hidden rounded-md"
 			>
 				<div
-					class="max-w-full relative w-full h-full hidden md:block"
+					class="max-w-full relative w-full h-full"
 					data-flip-id={`img-${ep.id}`}
 				>
 					<section class="absolute h-full w-full bg-gradient-to-t from-surface-600 opacity-80" />
