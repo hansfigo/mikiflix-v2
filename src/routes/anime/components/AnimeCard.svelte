@@ -8,9 +8,9 @@
 </script>
 
 <button on:click={() => goto(`/anime/${relation.id}`, { invalidateAll: true })}>
-	<div class="relative rounded-lg card-hover w-40 flex justify-center flex-col items-center">
+	<div class="relative rounded-lg card-hover w-36 md:w-40 flex justify-center flex-col items-center">
 		<div
-			class="max-w-full relative w-full h-full hidden md:block"
+			class="max-w-full relative w-full h-full md:block"
 			data-flip-id={`img-${relation.id}`}
 		>
 			<section class="absolute h-full w-full bg-gradient-to-t from-surface-600 opacity-80" />

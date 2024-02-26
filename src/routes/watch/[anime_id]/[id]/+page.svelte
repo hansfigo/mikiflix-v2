@@ -17,7 +17,7 @@
 		onReady={handlePlayerReady}
 		options={{ controls: true, autoplay: false }}
 	/>
-	<section class="container">
+	<section class="container px-8 md:px-0">
 		<h1 class="text-2xl font-bold">{animeData.title?.romaji}</h1>
 	</section>
 </section>

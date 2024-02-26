@@ -13,10 +13,10 @@
 
 <section class="mt-8">
 	<h1>Characters</h1>
-	<div class="flex flex-wrap gap-6 justify-between items-start pt-8">
+	<div class="flex flex-wrap gap-6 justify-between items-start pt-8 w-full">
 		{#each characters as chara}
 			<div
-				class="flex justify-between gap-x-3 p-5 w-[48%] max-h-48 h-48 border-[2px] border-white/10 overflow-hidden rounded-md"
+				class="flex justify-between gap-x-3 p-5 w-full md:w-[48%]  max-h-48 h-48 border-[2px] border-white/10 overflow-hidden rounded-md"
 			>
 				<div class="max-w-[40%] h-full flex rounded-md overflow-hidden">
 					<img class="object-cover" src={chara.image} alt={chara.name.first} />
