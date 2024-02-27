@@ -8,7 +8,7 @@
 
 <div class="flex w-full justify-between">
 	{#each $tabStore as tab}
-		<a class={$isTabActiveStore[tab.text] ? 'active' : ''} data-sveltekit-noscroll href={tab.href}
+		<a class={$isTabActiveStore[tab.text] ? 'active' : ''} data-sveltekit-noscroll  href={tab.href}
 			>{capitalizeFirstLetter(tab.text)}</a
 		>
 	{/each}
