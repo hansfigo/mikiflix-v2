@@ -39,11 +39,11 @@
 	<div class="flex justify-center w-full px-8 md:px-0">
 		<div class="w-screen relative container lg:flex flex-col gap-4">
 			<div class="flex flex-col md:flex-row  gap-12 min-h-[24rem]">
-				<div class="min-w-full md:min-w-[18rem] relative mx-8 md:mx-0">
+				<div class="min-w-full md:min-w-[18rem] relative  md:mx-0">
 					<AnimeCover {anim} />
 				</div>
 				<div
-					class="relative px-8 md:px-0  pt-12 md:flex flex-col  justify-between items-start gap-6 flex h-full w-full overflow-hidden pb-4"
+					class="relative md:px-0  pt-12 md:flex flex-col  justify-between items-start gap-6 flex h-full w-full overflow-hidden pb-4"
 				>
 					<div class="flex w-full items-end md:justify-normal justify-between gap-2">
 						<h1>{anim.title?.romaji}</h1>
