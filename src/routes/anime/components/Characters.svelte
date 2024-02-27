@@ -13,13 +13,13 @@
 
 <section class="mt-8">
 	<h1>Characters</h1>
-	<div class="flex flex-wrap gap-6 justify-between items-start pt-8 w-full">
+	<div class="flex flex-wrap gap-6 justify-between items-start pt-8 w-full ">
 		{#each characters as chara}
 			<div
-				class="flex justify-between md:gap-x-3 gap-x-2 md:p-5 p-2 w-full md:w-[48%] md:max-h-48 md:h-48 border-[2px] border-white/10 overflow-hidden rounded-md"
+				class="flex overflow-x-scroll hide-scrollbar justify-between md:gap-x-3 gap-x-2 md:p-5 p-2 w-full md:w-[48%] md:max-h-48 md:h-48 border-[2px] border-white/10 overflow-hidden rounded-md"
 			>
-				<div class="img-wrapper">
-					<img class="object-cover w-full" src={chara.image} alt={chara.name.first} />
+				<div class="img-wrapper bg-red-500">
+					<img class="object-cover w-full h-full" src={chara.image} alt={chara.name.first} />
 				</div>
 				<div class="flex flex-col mr-8 justify-between items-start">
 					<p>{chara.name.full}</p>
@@ -33,10 +33,10 @@
 				{:else}
 					<p>No Data</p>
 				{/if}
-				<div class="img-wrapper ">
+				<div class="img-wrapper">
 					{#if chara.voiceActors && chara.voiceActors[0] && chara.voiceActors[0].name}
 						<img
-							class="object-cover"
+							class="object-cover w-full h-full"
 							src={chara.voiceActors[0].image}
 							alt={chara.voiceActors[0].image}
 						/>
@@ -56,7 +56,11 @@
 		@apply text-sm;
 	}
 
-	.img-wrapper {
+	/* .img-wrapper {
 		@apply max-w-[3.6rem] min-w-[3.6rem] h-[70%] md:min-w-fit md:max-w-[40%] md:h-full flex rounded-md overflow-hidden;
+	} */
+
+	.img-wrapper {
+		@apply min-w-[2rem] max-w-[2rem] md:max-w-[40%] min-h-[2rem] rounded-md overflow-hidden;
 	}
 </style>

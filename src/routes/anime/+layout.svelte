@@ -31,7 +31,7 @@
 	<title>{anim.title?.romaji} | Mikiflix</title>
 </svelte:head>
 
-<section>
+<section class="overflow-x-hidden">
 	<div class="w-full h-72 relative">
 		<div class="bg-black opacity-40 absolute w-full h-full" />
 		<img class="object-cover w-full h-full bg-gray-700 border-0" src={resizeImage(anim.cover, 1000)} alt="" />

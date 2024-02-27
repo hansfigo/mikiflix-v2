@@ -13,7 +13,7 @@
 	});
 </script>
 
-<section class="flex flex-col gap-10 px-8 md:px-0">
+<section class="flex flex-col gap-10 px-8 md:px-0 overflow-x-hidden">
 	<div>
 		<h1>Trailer</h1>
 		<iframe
