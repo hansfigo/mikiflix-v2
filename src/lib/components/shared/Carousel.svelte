@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { Anime } from '$lib/types/anime';
-	import { register } from 'swiper/element/bundle';
+	import { resizeImage } from '$lib/utils/imageResize';
 	import SvelteMarkdown from 'svelte-markdown';
+	import { register } from 'swiper/element/bundle';
 
 	register();
 
@@ -51,7 +52,7 @@
 				</div>
 				<img
 					class="object-cover h-[26rem] w-full relative"
-					src={anime.cover}
+					src={resizeImage(anime.cover, 1000)}
 					alt=""
 					loading="lazy"
 				/>

@@ -18,12 +18,12 @@
 	<title>Mikiflix | Free Anime Streaming Web</title>
 </svelte:head>
 
-<div>
+<div class="flex flex-col justify-center w-full items-center">
 	<div class="min-h-[18rem] w-full">
 		{#if browser}
 			<Carousel {trendingAnime} />
 		{:else}
-			<div class="placeholder h-52 w-screen animate-pulse" >HellPPPPPo</div>
+			<div class="placeholder h-52 w-screen animate-pulse" ></div>
 		{/if}
 	</div>
 	{#if isBackendError}
@@ -56,12 +56,12 @@
 			</aside>
 		</div>
 	{/if}
-	<section class="md:px-8">
+	<section class="container flex  flex-col w-full">
 		<h1 class=" my-7">Recent Release</h1>
 		{#await recentAnime}
 			Loading...
 		{:then value}
-			<div class="flex gap-4 flex-wrap justify-center">
+			<div class="grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 grid gap-4 justify-center items-center px-4">
 				{#each value as anime, i}
 					<AnimeCard animeList={recentAnime} {i} popupData={recentAnimePopupData[i]} />
 				{/each}

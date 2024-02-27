@@ -28,9 +28,9 @@
 	{#if $animeDetailStore.characters}
 		<Characters characters={$animeDetailStore.characters.slice(0, 6)} />
 	{/if}
-	<section class="flex flex-col items-baseline justify-start">
+	<section class="flex flex-col items-baseline justify-start gap-4">
 		<h1>Recomendation</h1>
-		<div class="flex flex-wrap gap-6 justify-between items-center pt-8">
+		<div class="grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 grid gap-4 justify-center items-center	">
 			{#if $animeDetailStore.recommendations}
 				{#each $animeDetailStore.recommendations as recommend}
 					<AnimeCard relation={recommend} />

@@ -4,17 +4,16 @@
 
 	export let relation: Relation | Recommendation;
 
-	let isImageLoaded = false;
 </script>
 
 <button on:click={() => goto(`/anime/${relation.id}`, { invalidateAll: true })}>
-	<div class="relative rounded-lg card-hover w-36 md:w-40 flex justify-center flex-col items-center">
+	<div class="relative rounded-lg card-hover min-w-[8rem] md:min-w-full max-h-[20rem] lg:min-h-[16rem] lg:max-h-[16rem] overflow-hidden w-full flex justify-center flex-col items-center">
 		<div
 			class="max-w-full relative w-full h-full md:block"
 			data-flip-id={`img-${relation.id}`}
 		>
 			<section class="absolute h-full w-full bg-gradient-to-t from-surface-600 opacity-80" />
-			<img class="rounded-lg" src={relation.image} alt="Anime Cover"/>
+			<img class="rounded-lg min-h-[14rem] w-full object-cover" src={relation.image} alt="Anime Cover"/>
 		</div>
 		<section class="absolute bottom-4 left-2 break-words text-xs">
 			{relation.title?.romaji}
