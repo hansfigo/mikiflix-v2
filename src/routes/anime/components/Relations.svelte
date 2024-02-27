@@ -19,6 +19,6 @@
 
 <style lang="postcss">
 	h1 {
-		@apply text-2xl font-semibold;
+		@apply text-lg md:text-2xl font-semibold;
 	}
 </style>

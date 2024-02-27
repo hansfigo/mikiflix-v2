@@ -25,7 +25,7 @@
 <form on:submit|preventDefault={() => handleSearch()}>
 	<input
 		bind:value={$input}
-		class={`input variant-ghost-tertiary text-white w-44`}
+		class={`input variant-ghost-tertiary text-white w-44 h-10 md:h-full`}
 		title="Input (text)"
 		type="text"
 		placeholder="search anime"

@@ -13,7 +13,7 @@
 	});
 </script>
 
-<section class="flex flex-col gap-10">
+<section class="flex flex-col gap-10 px-8 md:px-0">
 	<div>
 		<h1>Trailer</h1>
 		<iframe
@@ -42,6 +42,6 @@
 
 <style lang="postcss">
 	h1 {
-		@apply text-2xl font-semibold;
+		@apply text-lg md:text-2xl font-semibold;
 	}
 </style>

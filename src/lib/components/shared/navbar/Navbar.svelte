@@ -41,6 +41,6 @@
 	}
 
 	nav{
-		@apply flex justify-center w-full
+		@apply flex flex-col items-center justify-center w-full
 	}
 </style>
