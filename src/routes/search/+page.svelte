@@ -9,27 +9,31 @@
 	<title>Search for '{data.query} | Mikiflix'</title>
 </svelte:head>
 
-<div class="pt-20">
-	<h1 class="px-8 pb-6">Search Results for <span>'{data.query}'</span></h1>
-	{#await data.search.results}
-		Loading...
-	{:then value}
-		<div class="px-8  w-full   flex gap-4 flex-wrap justify-between md:justify-start">
-			{#each value as anime, i}
-				<AnimeCard animeList={data.search.results} {i} popupData={data.popup[i]} />
-			{/each}
-		</div>
-	{:catch error}
-		{error.message}
-	{/await}
-</div>
+<main class="pt-20 flex w-full justify-center">
+	<div class="container px-8 md:px-0">
+		<h1 class="pb-6">Search Results for <span>'{data.query}'</span></h1>
+		{#await data.search.results}
+			Loading...
+		{:then value}
+			<div
+				class="grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 grid gap-4 justify-center items-center"
+			>
+				{#each value as anime, i}
+					<AnimeCard animeList={data.search.results} {i} popupData={data.popup[i]} />
+				{/each}
+			</div>
+		{:catch error}
+			{error.message}
+		{/await}
+	</div>
+</main>
 
 <style lang="postcss">
 	h1 {
 		@apply text-xl;
 	}
 
-	span{
+	span {
 		font-weight: 600;
 	}
 </style>

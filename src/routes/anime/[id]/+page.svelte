@@ -13,7 +13,7 @@
 	});
 </script>
 
-<section class="flex flex-col gap-10">
+<section class="flex flex-col gap-10 px-8 md:px-0">
 	<div>
 		<h1>Trailer</h1>
 		<iframe
@@ -28,9 +28,9 @@
 	{#if $animeDetailStore.characters}
 		<Characters characters={$animeDetailStore.characters.slice(0, 6)} />
 	{/if}
-	<section class="flex flex-col items-baseline justify-start">
+	<section class="flex flex-col items-baseline justify-start gap-4">
 		<h1>Recomendation</h1>
-		<div class="flex flex-wrap gap-6 justify-between items-center pt-8">
+		<div class="grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 grid gap-4 justify-center items-center	">
 			{#if $animeDetailStore.recommendations}
 				{#each $animeDetailStore.recommendations as recommend}
 					<AnimeCard relation={recommend} />
@@ -42,6 +42,6 @@
 
 <style lang="postcss">
 	h1 {
-		@apply text-2xl font-semibold;
+		@apply text-lg md:text-2xl font-semibold;
 	}
 </style>

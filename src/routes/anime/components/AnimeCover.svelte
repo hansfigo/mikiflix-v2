@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { AnimeInfo } from '$lib/types/anime';
+	import { resizeImage } from '$lib/utils/imageResize';
 	import SvelteMarkdown from 'svelte-markdown';
 
 	export let anim: AnimeInfo = {} as AnimeInfo;
@@ -16,7 +17,7 @@
 	>
 		<img
 			class="md:max-w-[18rem] w-full h-[15rem] object-cover md:min-w-[18rem] md:h-[26rem] bg-gray-800"
-			src={anim.image}
+			src={resizeImage(anim.image, 300)}
 			alt={anim.title?.romaji}
 		/>
 	</div>

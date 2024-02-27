@@ -21,7 +21,7 @@
 	{#if $navigating}
 		<ProgressBar rounded={'rounded-none'} height={'h-[3px]'} />
 	{/if}
-	<div class="flex items-center justify-between w-full px-8 py-3">
+	<div class="flex container items-center justify-between w-full px-8 md:px-0 py-3">
 		<a href="/">
 			<img class="h-8 w-8" src={logo} alt="" />
 		</a>
@@ -38,5 +38,9 @@
 	}
 	.nav-top {
 		@apply fixed bg-surface-800/30 backdrop-blur-sm w-screen z-20;
+	}
+
+	nav{
+		@apply flex flex-col items-center justify-center w-full
 	}
 </style>

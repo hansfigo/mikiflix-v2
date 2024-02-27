@@ -21,6 +21,6 @@
 	}
 
 	a {
-		@apply border-b-2 py-2 border-transparent text-lg font-semibold;
+		@apply border-b-2 py-2 border-transparent md:text-lg font-semibold;
 	}
 </style>

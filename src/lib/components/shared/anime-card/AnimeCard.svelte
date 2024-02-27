@@ -12,12 +12,15 @@
 	$: anim = animeList[i];
 </script>
 
+
+<div>
+
 <a href={`/anime/${anim.id}`} >
 	<div
-		class="relative rounded-lg card-hover  w-32  md:w-40 flex md:justify-center flex-col items-center"
+	class="relative rounded-lg card-hover min-w-[8rem] md:min-w-full max-h-[20rem] lg:min-h-[16rem] lg:max-h-[16rem] overflow-hidden w-full flex justify-center flex-col items-center"
 		use:popup={popupData}
 	>
-		<AnimeCoverMobile {anim}/>
+		<!-- <AnimeCoverMobile {anim}/> -->
 		<AnimeCoverDesktop {anim}/>
 
 		<section class="absolute bottom-4 left-2 break-words text-xs">{anim.title?.romaji}</section>
@@ -45,6 +48,7 @@
 		{/if}
 		<div class="arrow variant-glass-tertiary" />
 	</div>
+</div>
 </div>
 
 
