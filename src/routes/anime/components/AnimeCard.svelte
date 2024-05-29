@@ -15,7 +15,7 @@
 			<section class="absolute h-full w-full bg-gradient-to-t from-surface-600 opacity-80" />
 			<img class="rounded-lg min-h-[14rem] w-full object-cover" src={relation.image} alt="Anime Cover"/>
 		</div>
-		<section class="absolute bottom-4 left-2 break-words text-xs">
+		<section class=" bottom-4 left-2 break-words text-xs">
 			{relation.title?.romaji}
 		</section>
 	</div>
